@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ProxyPAC is a local-first macOS menu bar app for strict allowlist proxy routing, fast upstream switching, and automatic failover.">
+  <meta name="color-scheme" content="light dark">
+  <title>ProxyPAC · Selective proxy routing for macOS</title>
+  <link rel="canonical" href="https://legionxiong.github.io/proxypac/">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .proxy-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(330px, 0.95fr);
+      gap: clamp(40px, 7vw, 84px);
+      align-items: center;
+    }
+
+    .proxy-hero::after { display: none; }
+
+    .proxy-lockup {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 27px;
+    }
+
+    .proxy-lockup img {
+      width: 66px;
+      height: 66px;
+      border-radius: 16px;
+      box-shadow: 0 16px 34px rgba(17, 24, 39, 0.23);
+    }
+
+    .proxy-lockup p { margin: 0; color: var(--muted); font-size: 14px; font-weight: 650; }
+
+    .proxy-lockup strong {
+      display: block;
+      color: var(--text);
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+
+    .proxy-title {
+      margin: 0;
+      font-size: clamp(47px, 7vw, 78px);
+      line-height: 0.99;
+      letter-spacing: -0.052em;
+    }
+
+    .proxy-menu {
+      position: relative;
+      max-width: 390px;
+      margin-inline: auto;
+      padding: 19px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      color: #f7f9fc;
+      background: rgba(17, 24, 39, 0.97);
+      box-shadow: 0 30px 75px rgba(17, 24, 39, 0.3);
+      transform: rotate(1.5deg);
+    }
+
+    .menu-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-title img { width: 36px; height: 36px; border-radius: 9px; }
+    .menu-title strong { display: block; font-size: 14px; }
+    .menu-title span { display: block; color: #46efba; font-size: 12px; }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      margin-left: auto;
+      border-radius: 50%;
+      background: #25c77a;
+      box-shadow: 0 0 0 5px rgba(37, 199, 122, 0.1);
+    }
+
+    .menu-info {
+      display: grid;
+      gap: 5px;
+      padding-block: 16px;
+      color: #aeb8c7;
+      font: 12px/1.4 ui-monospace, "SFMono-Regular", Menlo, monospace;
+    }
+
+    .menu-picker {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 11px 12px;
+      border-radius: 10px;
+      color: #dbe3ee;
+      background: rgba(255, 255, 255, 0.07);
+      font-size: 12px;
+    }
+
+    .menu-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 13px;
+    }
+
+    .menu-actions span {
+      padding: 8px 4px;
+      border-radius: 8px;
+      color: #dbe3ee;
+      background: rgba(255, 255, 255, 0.07);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+      counter-reset: setup;
+    }
+
+    .step {
+      padding: 26px;
+      border-top: 2px solid var(--accent);
+      border-radius: 0 0 18px 18px;
+      background: var(--surface);
+      counter-increment: setup;
+    }
+
+    .step::before { color: var(--accent); content: "0" counter(setup); font-size: 13px; font-weight: 760; }
+    .step h3 { margin: 16px 0 7px; font-size: 18px; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .privacy-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: clamp(28px, 5vw, 50px);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--surface-strong), var(--surface));
+      box-shadow: var(--shadow);
+    }
+
+    .privacy-banner h2 {
+      margin: 0;
+      font-size: clamp(29px, 4vw, 43px);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .privacy-banner p { max-width: 630px; margin: 13px 0 0; color: var(--muted); }
+
+    @media (max-width: 880px) {
+      .proxy-hero { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .proxy-menu { transform: none; }
+      .privacy-banner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav shell">
+    <a class="wordmark" href="/" aria-label="Back to Independent Apps">
+      <span aria-hidden="true">←</span>
+      <span>Independent Apps</span>
+    </a>
+    <nav class="nav-links" aria-label="ProxyPAC navigation">
+      <a href="#features">Features</a>
+      <a href="/proxypac/privacy.html">Privacy</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell proxy-hero">
+      <div>
+        <div class="proxy-lockup">
+          <img src="/assets/proxypac-icon.svg" alt="ProxyPAC app icon" width="66" height="66">
+          <p><strong>ProxyPAC</strong>macOS 13+ · Menu bar utility</p>
+        </div>
+        <p class="eyebrow">Selective proxy routing</p>
+        <h1 class="proxy-title">Proxy only what you choose.</h1>
+        <p class="hero-copy">Keep a strict domain allowlist, switch between your own upstream proxies, and let every other connection stay direct.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a>
+          <a class="button" href="/proxypac/privacy.html">Privacy policy</a>
+        </div>
+      </div>
+
+      <div class="proxy-menu" aria-label="Illustration of the ProxyPAC menu bar interface">
+        <div class="menu-title">
+          <img src="/assets/proxypac-icon.svg" alt="" width="36" height="36">
+          <div><strong>ProxyPAC</strong><span>● Running</span></div>
+          <i class="status-dot" aria-hidden="true"></i>
+        </div>
+        <div class="menu-info">
+          <span>PAC http://127.0.0.1:8899/proxy.pac</span>
+          <span>Allowlist · 6 domains</span>
+          <span>Local forwarder · Active</span>
+        </div>
+        <div class="menu-picker"><span>Upstream proxy</span><strong>Work proxy</strong></div>
+        <div class="menu-actions" aria-hidden="true"><span>Copy URL</span><span>Test</span><span>Settings</span></div>
+      </div>
+    </section>
+
+    <section class="section-block shell" id="features">
+      <p class="section-kicker">Designed for control</p>
+      <h2 class="section-title">The routing you need, without a system-wide tunnel.</h2>
+      <p class="section-intro">ProxyPAC serves a local PAC file and forwards only allowlisted traffic through proxies that you provide.</p>
+      <div class="features-grid">
+        <article class="feature-card"><span class="card-number">01</span><h3>Strict allowlist</h3><p>Only listed domains and their subdomains use the proxy. All other requests remain direct.</p></article>
+        <article class="feature-card"><span class="card-number">02</span><h3>Fast proxy switching</h3><p>Save multiple upstream proxies and make a new selection effective for new connections immediately.</p></article>
+        <article class="feature-card"><span class="card-number">03</span><h3>Automatic failover</h3><p>Try saved proxies in order when the current one cannot reach a requested allowlisted destination—without falling back to direct.</p></article>
+        <article class="feature-card"><span class="card-number">04</span><h3>Authenticated proxies</h3><p>Use optional usernames and passwords, with passwords kept in the macOS Keychain instead of the PAC file.</p></article>
+        <article class="feature-card"><span class="card-number">05</span><h3>Live, local visibility</h3><p>View active proxied domains and per-domain byte counts in memory. Closing the window clears the statistics.</p></article>
+        <article class="feature-card"><span class="card-number">06</span><h3>Native menu bar app</h3><p>Start or stop the service, copy the PAC URL, test connectivity, and switch proxies without leaving the menu bar.</p></article>
+      </div>
+    </section>
+
+    <section class="section-block shell" id="how-it-works">
+      <p class="section-kicker">Three steps</p>
+      <h2 class="section-title">Set it once. Switch when you need.</h2>
+      <div class="steps">
+        <article class="step"><h3>Add your proxy</h3><p>Enter an upstream proxy server and port. Authentication is optional.</p></article>
+        <article class="step"><h3>Build the allowlist</h3><p>Add only the domains that should use a proxy. ProxyPAC generates the PAC file automatically.</p></article>
+        <article class="step"><h3>Enable automatic proxy configuration</h3><p>Paste the local PAC URL into macOS Network Settings, then keep ProxyPAC running in the menu bar.</p></article>
+      </div>
+    </section>
+
+    <section class="section-block shell">
+      <div class="privacy-banner">
+        <div>
+          <p class="section-kicker">Local-first privacy</p>
+          <h2>Your configuration stays on your Mac.</h2>
+          <p>ProxyPAC has no developer-operated analytics, account system, or traffic server. Local services listen only on 127.0.0.1, and live domain statistics are memory-only.</p>
+        </div>
+        <a class="button primary" href="/proxypac/privacy.html">Read the policy <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <p>© 2026 ProxyPAC</p>
+    <p><a href="/proxypac/privacy.html">Privacy Policy</a> · No cookies · No analytics</p>
+  </footer>
+</body>
+</html>

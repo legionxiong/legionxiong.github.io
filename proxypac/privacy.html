@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ProxyPAC privacy policy. ProxyPAC runs locally on your Mac and does not send proxy configuration or traffic statistics to the developer.">
+  <meta name="color-scheme" content="light dark">
+  <title>Privacy Policy · ProxyPAC</title>
+  <link rel="canonical" href="https://legionxiong.github.io/proxypac/privacy.html">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #f4f7fb;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: #ffffff;
+      --text: #172033;
+      --muted: #5f697a;
+      --line: rgba(23, 32, 51, 0.11);
+      --accent: #087cf0;
+      --accent-soft: rgba(8, 124, 240, 0.1);
+      --success: #0a9f61;
+      --shadow: 0 22px 70px rgba(35, 50, 78, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(8, 124, 240, 0.12), transparent 30rem),
+        var(--page);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 0.18em;
+    }
+
+    .site-header {
+      width: min(960px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 720;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      color: white;
+      background: linear-gradient(145deg, #0e8cff, #0066d6);
+      box-shadow: 0 8px 22px rgba(8, 124, 240, 0.25);
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .language-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .language-links a {
+      padding: 5px 9px;
+      border-radius: 8px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .language-links a:hover,
+    .language-links a:focus-visible {
+      color: var(--accent);
+      background: var(--accent-soft);
+      outline: none;
+    }
+
+    main {
+      width: min(960px, calc(100% - 40px));
+      margin: 0 auto 60px;
+    }
+
+    .hero {
+      padding: 64px 64px 54px;
+      border: 1px solid var(--line);
+      border-radius: 28px 28px 0 0;
+      background: var(--surface-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 20px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      color: var(--success);
+      background: color-mix(in srgb, var(--success) 10%, transparent);
+      font-size: 13px;
+      font-weight: 680;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(36px, 7vw, 62px);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
+    }
+
+    .lede {
+      max-width: 700px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.4vw, 22px);
+      line-height: 1.5;
+    }
+
+    .effective-date {
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .policy {
+      padding: 28px 64px 64px;
+      border: solid var(--line);
+      border-width: 0 1px 1px;
+      border-radius: 0 0 28px 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .policy + .policy {
+      margin-top: 30px;
+      border-width: 1px;
+      border-radius: 28px;
+    }
+
+    .policy-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 24px 0 6px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .policy-heading h2 {
+      margin: 0;
+      font-size: 27px;
+      letter-spacing: -0.025em;
+    }
+
+    section {
+      padding: 23px 0 2px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    section:last-child {
+      border-bottom: 0;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.015em;
+    }
+
+    p {
+      margin: 8px 0 14px;
+    }
+
+    ul {
+      margin: 10px 0 16px;
+      padding-left: 1.3em;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    footer {
+      width: min(960px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 0 0 40px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #0d1118;
+        --surface: rgba(25, 31, 42, 0.9);
+        --surface-strong: #171d27;
+        --text: #f2f5fa;
+        --muted: #a7b0bf;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #55a7ff;
+        --accent-soft: rgba(85, 167, 255, 0.13);
+        --success: #4ed89a;
+        --shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+        width: min(100% - 28px, 960px);
+        padding-top: 18px;
+      }
+
+      main,
+      footer {
+        width: min(100% - 28px, 960px);
+      }
+
+      .hero {
+        padding: 42px 24px 38px;
+        border-radius: 22px 22px 0 0;
+      }
+
+      .policy {
+        padding: 18px 24px 38px;
+        border-radius: 0 0 22px 22px;
+      }
+
+      .policy + .policy {
+        border-radius: 22px;
+      }
+
+      .policy-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .language-links {
+        justify-content: flex-start;
+        gap: 1px;
+      }
+
+      .language-links span {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="ProxyPAC home">
+      <span class="brand-mark" aria-hidden="true">Y</span>
+      <span>ProxyPAC</span>
+    </a>
+    <nav class="language-links" aria-label="Policy languages">
+      <a href="#english" lang="en">English</a>
+      <span aria-hidden="true">·</span>
+      <a href="#simplified-chinese" lang="zh-Hans">简体</a>
+      <span aria-hidden="true">·</span>
+      <a href="#traditional-chinese" lang="zh-Hant">繁體</a>
+      <span aria-hidden="true">·</span>
+      <a href="#japanese" lang="ja">日本語</a>
+      <span aria-hidden="true">·</span>
+      <a href="#korean" lang="ko">한국어</a>
+      <span aria-hidden="true">·</span>
+      <a href="#german" lang="de">Deutsch</a>
+      <span aria-hidden="true">·</span>
+      <a href="#french" lang="fr">Français</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" id="english">
+      <p class="eyebrow">No tracking · No developer analytics</p>
+      <h1>Privacy Policy</h1>
+      <p class="lede">ProxyPAC is a local-first macOS utility. Your proxy settings and traffic statistics stay on your Mac and are not sent to the developer.</p>
+      <p class="effective-date">Effective date: August 24, 2026</p>
+    </div>
+
+    <article class="policy" aria-labelledby="english-policy-title">
+      <div class="policy-heading">
+        <h2 id="english-policy-title">ProxyPAC privacy policy</h2>
+        <span class="muted" lang="en">English</span>
+      </div>
+
+      <section>
+        <h3>1. Overview</h3>
+        <p>ProxyPAC runs locally on your Mac. The developer does not collect, receive, sell, or share your browsing activity, proxy configuration, allowlist, credentials, or traffic statistics through ProxyPAC.</p>
+        <p>ProxyPAC does not require a ProxyPAC account and does not include advertising, tracking, or developer-operated analytics or crash-reporting services.</p>
+      </section>
+
+      <section>
+        <h3>2. Data stored on your Mac</h3>
+        <ul>
+          <li>Upstream proxy names, server addresses, ports, optional usernames, local service ports, allowlist domains, and app preferences are stored in ProxyPAC's local app storage.</li>
+          <li>Upstream proxy passwords are stored in the macOS Keychain. Passwords are not written into the generated PAC file.</li>
+          <li>The generated PAC file is stored in ProxyPAC's local Application Support directory.</li>
+          <li>When the Active Domains window is open, ProxyPAC keeps successfully proxied domain names and forwarded byte counts in memory. It does not record full URLs, request headers, request bodies, response bodies, or page contents. These statistics are cleared when the window closes or the app quits.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. Network connections</h3>
+        <p>The PAC service and local forwarder listen only on <code>127.0.0.1</code>, so they are available only to software running on your Mac. Traffic matching your allowlist is forwarded to the upstream proxy that you configure. Automatic failover, when enabled, may try your other saved upstream proxies in list order.</p>
+        <p>ProxyPAC does not route traffic through a server operated by the developer. An upstream proxy receives the traffic you choose to route through it and may observe destination hosts and traffic metadata. For unencrypted HTTP traffic, its operator may also be able to view content. The upstream proxy operator's own terms and privacy practices apply. Proxy authentication credentials are sent only to the upstream proxy you configured when authentication is required.</p>
+        <p>StoreKit communicates with Apple to load ProxyPAC Pro product information, process purchases, restore purchases, and verify entitlement. Apple's handling of that information is governed by <a href="https://www.apple.com/legal/privacy/" rel="external noreferrer">Apple's Privacy Policy</a>.</p>
+      </section>
+
+      <section>
+        <h3>4. Retention and your controls</h3>
+        <p>Local settings remain on your Mac until you change or remove them. Removing an upstream proxy and applying the change also removes its saved credential from the macOS Keychain. Active Domains statistics are memory-only and are cleared as described above.</p>
+        <p>You can stop ProxyPAC, remove allowlist domains and upstream proxies, turn off automatic failover, and disable launch at login from the app. Because ProxyPAC does not send this data to the developer, there is no developer server containing a copy to delete.</p>
+      </section>
+
+      <section>
+        <h3>5. Children's privacy</h3>
+        <p>ProxyPAC is not designed to collect personal information from anyone, including children.</p>
+      </section>
+
+      <section>
+        <h3>6. Changes and contact</h3>
+        <p>If this policy changes, the updated version and effective date will be published on this page. For privacy questions, contact the developer through the <a href="https://github.com/legionxiong" rel="external noreferrer">legionxiong GitHub profile</a>.</p>
+      </section>
+    </article>
+
+    <article class="policy" id="simplified-chinese" lang="zh-Hans" aria-labelledby="chinese-policy-title">
+      <div class="policy-heading">
+        <h2 id="chinese-policy-title">ProxyPAC 隐私政策</h2>
+        <span class="muted">简体中文</span>
+      </div>
+      <p class="effective-date">生效日期：2026 年 8 月 24 日</p>
+
+      <section>
+        <h3>1. 概述</h3>
+        <p>ProxyPAC 在你的 Mac 本地运行。开发者不会通过 ProxyPAC 收集、接收、出售或分享你的浏览活动、代理配置、白名单、认证信息或流量统计。</p>
+        <p>ProxyPAC 不要求创建 ProxyPAC 账户，也不包含广告、跟踪、开发者运营的分析服务或崩溃报告服务。</p>
+      </section>
+
+      <section>
+        <h3>2. 保存在 Mac 上的数据</h3>
+        <ul>
+          <li>上游代理名称、服务器地址、端口、可选用户名、本地服务端口、白名单域名及 App 偏好设置保存在 ProxyPAC 的本地 App 存储中。</li>
+          <li>上游代理密码存储在 macOS 钥匙串中，不会写入生成的 PAC 文件。</li>
+          <li>生成的 PAC 文件保存在 ProxyPAC 本地的 Application Support 目录中。</li>
+          <li>打开“活跃域名”窗口时，ProxyPAC 会在内存中保存成功走代理的域名及转发字节数。它不会记录完整 URL、请求头、请求正文、响应正文或网页内容。关闭该窗口或退出 App 时，这些统计会被清除。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. 网络连接</h3>
+        <p>PAC 服务与本地转发器仅监听 <code>127.0.0.1</code>，因此只有你的 Mac 上运行的软件可以访问。命中白名单的流量会转发到你配置的上游代理。启用自动故障切换后，ProxyPAC 可能按列表顺序尝试你保存的其他上游代理。</p>
+        <p>ProxyPAC 不会把流量发送到开发者运营的服务器。上游代理会接收你选择经其转发的流量，并可能看到目标主机和流量元数据；对于未加密的 HTTP 流量，其运营者还可能看到传输内容。相应上游代理运营者的条款及隐私政策适用。需要认证时，代理认证信息只会发送给你配置的上游代理。</p>
+        <p>StoreKit 会与 Apple 通信，以加载 ProxyPAC Pro 商品信息、处理和恢复购买并验证权益。Apple 对相关信息的处理适用 <a href="https://www.apple.com/legal/privacy/zh-cn/" rel="external noreferrer">Apple 隐私政策</a>。</p>
+      </section>
+
+      <section>
+        <h3>4. 保存期限与用户控制</h3>
+        <p>本地设置会保留在你的 Mac 上，直到你修改或移除它们。移除上游代理并应用更改后，其保存的认证信息也会从 macOS 钥匙串中删除。“活跃域名”统计仅存在于内存，并会按上述方式清除。</p>
+        <p>你可以在 App 中停止 ProxyPAC、移除白名单域名和上游代理、关闭自动故障切换，以及禁止登录后启动。由于 ProxyPAC 不会将这些数据发送给开发者，因此开发者服务器上没有相应副本需要删除。</p>
+      </section>
+
+      <section>
+        <h3>5. 儿童隐私</h3>
+        <p>ProxyPAC 的设计不会收集任何人的个人信息，其中也包括儿童。</p>
+      </section>
+
+      <section>
+        <h3>6. 政策变更与联系</h3>
+        <p>如果本政策发生变化，更新后的版本和生效日期将在此页面发布。如有隐私相关问题，可通过 <a href="https://github.com/legionxiong" rel="external noreferrer">legionxiong 的 GitHub 主页</a>联系开发者。</p>
+      </section>
+    </article>
+
+    <article class="policy" id="traditional-chinese" lang="zh-Hant" aria-labelledby="traditional-chinese-policy-title">
+      <div class="policy-heading">
+        <h2 id="traditional-chinese-policy-title">ProxyPAC 隱私權政策</h2>
+        <span class="muted">繁體中文</span>
+      </div>
+      <p class="effective-date">生效日期：2026 年 8 月 24 日</p>
+
+      <section>
+        <h3>1. 概述</h3>
+        <p>ProxyPAC 會在你的 Mac 本機上執行。開發者不會透過 ProxyPAC 蒐集、接收、出售或分享你的瀏覽活動、代理伺服器設定、允許清單、認證資訊或流量統計資料。</p>
+        <p>ProxyPAC 不要求建立 ProxyPAC 帳號，也不含廣告、追蹤功能，或由開發者營運的分析與當機回報服務。</p>
+      </section>
+
+      <section>
+        <h3>2. 儲存在 Mac 上的資料</h3>
+        <ul>
+          <li>上游代理伺服器名稱、伺服器位址、連接埠、選填的使用者名稱、本機服務連接埠、允許清單網域及 App 偏好設定，均儲存在 ProxyPAC 的本機 App 儲存空間中。</li>
+          <li>上游代理伺服器密碼儲存在 macOS Keychain 中。密碼不會寫入產生的 PAC 檔案。</li>
+          <li>產生的 PAC 檔案儲存在 ProxyPAC 本機的 Application Support 目錄中。</li>
+          <li>開啟「作用中網域」視窗時，ProxyPAC 會在記憶體中保留成功透過代理伺服器連線的網域名稱及轉送位元組數。ProxyPAC 不會記錄完整 URL、要求標頭、要求本文、回應本文或網頁內容。關閉該視窗或結束 App 時，這些統計資料即會清除。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. 網路連線</h3>
+        <p>PAC 服務與本機轉送程式僅監聽 <code>127.0.0.1</code>，因此只有在你的 Mac 上執行的軟體才能存取。符合允許清單的流量會轉送至你設定的上游代理伺服器。啟用自動容錯移轉時，ProxyPAC 可能會依清單順序嘗試其他已儲存的上游代理伺服器。</p>
+        <p>ProxyPAC 不會將流量路由至由開發者營運的伺服器。上游代理伺服器會接收你選擇透過其路由的流量，並可能得知目的地主機及流量中繼資料。對於未加密的 HTTP 流量，其營運者亦可能查看傳輸內容。該上游代理伺服器營運者本身的條款與隱私權規範適用於此類資料。需要認證時，代理伺服器認證資訊只會傳送至你所設定的上游代理伺服器。</p>
+        <p>StoreKit 會與 Apple 通訊，以載入 ProxyPAC Pro 產品資訊、處理購買、回復購買項目及驗證使用權。Apple 對相關資訊的處理方式受 <a href="https://www.apple.com/legal/privacy/zh-tw/" rel="external noreferrer">Apple 隱私權政策</a>規範。</p>
+      </section>
+
+      <section>
+        <h3>4. 資料保留與你的控制權</h3>
+        <p>本機設定會保留在你的 Mac 上，直到你加以變更或移除。移除上游代理伺服器並套用變更後，為其儲存的認證資訊也會從 macOS Keychain 中刪除。「作用中網域」統計資料僅存在於記憶體中，並會依上述方式清除。</p>
+        <p>你可以在 App 中停止 ProxyPAC、移除允許清單網域及上游代理伺服器、關閉自動容錯移轉，以及停用登入時啟動。由於 ProxyPAC 不會將這些資料傳送給開發者，因此開發者的伺服器上沒有需要刪除的資料副本。</p>
+      </section>
+
+      <section>
+        <h3>5. 兒童隱私權</h3>
+        <p>ProxyPAC 的設計不會蒐集任何人的個人資訊，包括兒童的個人資訊。</p>
+      </section>
+
+      <section>
+        <h3>6. 政策變更與聯絡方式</h3>
+        <p>如本政策有所變更，更新後的版本及生效日期將公布於本頁面。如有隱私權相關問題，請透過 <a href="https://github.com/legionxiong" rel="external noreferrer">legionxiong 的 GitHub 個人檔案</a>聯絡開發者。</p>
+      </section>
+    </article>
+
+    <article class="policy" id="japanese" lang="ja" aria-labelledby="japanese-policy-title">
+      <div class="policy-heading">
+        <h2 id="japanese-policy-title">ProxyPAC プライバシーポリシー</h2>
+        <span class="muted">日本語</span>
+      </div>
+      <p class="effective-date">発効日：2026年8月24日</p>
+
+      <section>
+        <h3>1. 概要</h3>
+        <p>ProxyPAC はお使いの Mac 上でローカルに動作します。開発者が ProxyPAC を通じて、閲覧履歴、プロキシ設定、許可リスト、認証情報、または通信量の統計情報を収集、受信、販売、もしくは共有することはありません。</p>
+        <p>ProxyPAC の利用に ProxyPAC アカウントは必要ありません。また、広告、トラッキング、開発者が運営する分析サービス、またはクラッシュレポートサービスは含まれていません。</p>
+      </section>
+
+      <section>
+        <h3>2. Mac に保存されるデータ</h3>
+        <ul>
+          <li>上流プロキシの名前、サーバーアドレス、ポート、任意で設定するユーザー名、ローカルサービスポート、許可リストのドメイン、および App の環境設定は、ProxyPAC のローカル App ストレージに保存されます。</li>
+          <li>上流プロキシのパスワードは macOS Keychain に保存されます。パスワードが生成された PAC ファイルに書き込まれることはありません。</li>
+          <li>生成された PAC ファイルは、ProxyPAC のローカル Application Support ディレクトリに保存されます。</li>
+          <li>「アクティブなドメイン」ウインドウを開いている間、ProxyPAC はプロキシ経由の通信に成功したドメイン名と転送バイト数をメモリ上に保持します。完全な URL、リクエストヘッダー、リクエスト本文、レスポンス本文、またはページの内容は記録しません。これらの統計情報は、ウインドウを閉じるか App を終了すると消去されます。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. ネットワーク接続</h3>
+        <p>PAC サービスとローカルフォワーダーは <code>127.0.0.1</code> のみで待ち受けるため、お使いの Mac 上で動作するソフトウェアからのみアクセスできます。許可リストに一致する通信は、ユーザーが設定した上流プロキシへ転送されます。自動フェイルオーバーを有効にしている場合、保存されている他の上流プロキシがリストの順番に従って試行されることがあります。</p>
+        <p>ProxyPAC が開発者の運営するサーバーを経由して通信を転送することはありません。上流プロキシは、ユーザーが当該プロキシを経由するよう指定した通信を受信するため、接続先ホストや通信のメタデータを確認できる場合があります。暗号化されていない HTTP 通信については、その運営者が内容を確認できる場合もあります。当該上流プロキシ運営者の利用条件およびプライバシーに関する方針が適用されます。プロキシ認証が必要な場合、認証情報はユーザーが設定した上流プロキシにのみ送信されます。</p>
+        <p>StoreKit は Apple と通信し、ProxyPAC Pro の製品情報の取得、購入処理、購入の復元、および利用資格の確認を行います。Apple による当該情報の取り扱いには、<a href="https://www.apple.com/legal/privacy/jp/" rel="external noreferrer">Apple のプライバシーポリシー</a>が適用されます。</p>
+      </section>
+
+      <section>
+        <h3>4. 保存期間とユーザーによる管理</h3>
+        <p>ローカル設定は、ユーザーが変更または削除するまでお使いの Mac に保存されます。上流プロキシを削除して変更を適用すると、保存されていた当該プロキシの認証情報も macOS Keychain から削除されます。「アクティブなドメイン」の統計情報はメモリ上にのみ存在し、前述のとおり消去されます。</p>
+        <p>App では、ProxyPAC の停止、許可リストのドメインと上流プロキシの削除、自動フェイルオーバーの無効化、およびログイン時の起動の無効化を行えます。ProxyPAC はこれらのデータを開発者へ送信しないため、削除対象となるデータの複製が開発者のサーバーに保存されることはありません。</p>
+      </section>
+
+      <section>
+        <h3>5. 子どものプライバシー</h3>
+        <p>ProxyPAC は、子どもを含むいかなる個人からも個人情報を収集するようには設計されていません。</p>
+      </section>
+
+      <section>
+        <h3>6. 本ポリシーの変更とお問い合わせ</h3>
+        <p>本ポリシーを変更した場合、更新後の内容と発効日をこのページに掲載します。プライバシーに関するご質問は、<a href="https://github.com/legionxiong" rel="external noreferrer">legionxiong の GitHub プロフィール</a>を通じて開発者までお問い合わせください。</p>
+      </section>
+    </article>
+
+    <article class="policy" id="korean" lang="ko" aria-labelledby="korean-policy-title">
+      <div class="policy-heading">
+        <h2 id="korean-policy-title">ProxyPAC 개인정보 처리방침</h2>
+        <span class="muted">한국어</span>
+      </div>
+      <p class="effective-date">시행일: 2026년 8월 24일</p>
+
+      <section>
+        <h3>1. 개요</h3>
+        <p>ProxyPAC은 사용자의 Mac에서 로컬로 실행됩니다. 개발자는 ProxyPAC을 통해 사용자의 탐색 활동, 프록시 구성, 허용 목록, 인증 정보 또는 트래픽 통계를 수집, 수신, 판매하거나 공유하지 않습니다.</p>
+        <p>ProxyPAC은 ProxyPAC 계정을 요구하지 않으며 광고, 추적, 개발자가 운영하는 분석 서비스 또는 충돌 보고 서비스를 포함하지 않습니다.</p>
+      </section>
+
+      <section>
+        <h3>2. Mac에 저장되는 데이터</h3>
+        <ul>
+          <li>업스트림 프록시 이름, 서버 주소, 포트, 선택적 사용자 이름, 로컬 서비스 포트, 허용 목록 도메인 및 앱 환경설정은 ProxyPAC의 로컬 앱 저장소에 저장됩니다.</li>
+          <li>업스트림 프록시 비밀번호는 macOS Keychain에 저장됩니다. 비밀번호는 생성된 PAC 파일에 기록되지 않습니다.</li>
+          <li>생성된 PAC 파일은 ProxyPAC의 로컬 Application Support 디렉터리에 저장됩니다.</li>
+          <li>“활성 도메인” 창이 열려 있는 동안 ProxyPAC은 프록시를 통해 성공적으로 전달된 도메인 이름과 전달된 바이트 수를 메모리에 보관합니다. 전체 URL, 요청 헤더, 요청 본문, 응답 본문 또는 페이지 콘텐츠는 기록하지 않습니다. 이러한 통계는 창을 닫거나 앱을 종료하면 삭제됩니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. 네트워크 연결</h3>
+        <p>PAC 서비스와 로컬 포워더는 <code>127.0.0.1</code>에서만 수신 대기하므로 사용자의 Mac에서 실행되는 소프트웨어만 접근할 수 있습니다. 허용 목록과 일치하는 트래픽은 사용자가 구성한 업스트림 프록시로 전달됩니다. 자동 장애 조치가 활성화되어 있으면 저장된 다른 업스트림 프록시를 목록 순서대로 시도할 수 있습니다.</p>
+        <p>ProxyPAC은 개발자가 운영하는 서버를 통해 트래픽을 라우팅하지 않습니다. 업스트림 프록시는 사용자가 해당 프록시를 통해 라우팅하도록 선택한 트래픽을 수신하며 대상 호스트와 트래픽 메타데이터를 확인할 수 있습니다. 암호화되지 않은 HTTP 트래픽의 경우 해당 운영자가 콘텐츠도 확인할 수 있습니다. 업스트림 프록시 운영자 자체의 약관 및 개인정보 처리방침이 적용됩니다. 프록시 인증 정보는 인증이 필요한 경우에만 사용자가 구성한 업스트림 프록시로 전송됩니다.</p>
+        <p>StoreKit은 ProxyPAC Pro 제품 정보를 불러오고, 구매를 처리 및 복원하며, 사용 권한을 확인하기 위해 Apple과 통신합니다. 해당 정보에 대한 Apple의 처리는 <a href="https://www.apple.com/legal/privacy/" rel="external noreferrer">Apple 개인정보 처리방침</a>의 적용을 받습니다.</p>
+      </section>
+
+      <section>
+        <h3>4. 보관 기간 및 사용자의 제어 권한</h3>
+        <p>로컬 설정은 사용자가 변경하거나 삭제할 때까지 Mac에 유지됩니다. 업스트림 프록시를 제거하고 변경 사항을 적용하면 저장된 해당 인증 정보도 macOS Keychain에서 삭제됩니다. 활성 도메인 통계는 메모리에만 존재하며 위에서 설명한 방식으로 삭제됩니다.</p>
+        <p>앱에서 ProxyPAC을 중지하고, 허용 목록 도메인과 업스트림 프록시를 제거하고, 자동 장애 조치를 끄고, 로그인 시 실행을 비활성화할 수 있습니다. ProxyPAC은 이러한 데이터를 개발자에게 전송하지 않으므로 개발자 서버에는 삭제할 사본이 존재하지 않습니다.</p>
+      </section>
+
+      <section>
+        <h3>5. 아동의 개인정보 보호</h3>
+        <p>ProxyPAC은 아동을 포함하여 누구의 개인정보도 수집하도록 설계되지 않았습니다.</p>
+      </section>
+
+      <section>
+        <h3>6. 변경 및 문의</h3>
+        <p>본 방침이 변경되는 경우 업데이트된 버전과 시행일이 이 페이지에 게시됩니다. 개인정보 보호와 관련된 문의는 <a href="https://github.com/legionxiong" rel="external noreferrer">legionxiong GitHub 프로필</a>을 통해 개발자에게 연락해 주십시오.</p>
+      </section>
+    </article>
+
+    <article class="policy" id="german" lang="de" aria-labelledby="german-policy-title">
+      <div class="policy-heading">
+        <h2 id="german-policy-title">Datenschutzrichtlinie für ProxyPAC</h2>
+        <span class="muted">Deutsch</span>
+      </div>
+      <p class="effective-date">Gültig ab: 24. August 2026</p>
+
+      <section>
+        <h3>1. Überblick</h3>
+        <p>ProxyPAC wird lokal auf Ihrem Mac ausgeführt. Der Entwickler erhebt, empfängt, verkauft oder teilt über ProxyPAC weder Ihre Browseraktivitäten noch Ihre Proxy-Konfiguration, Zulassungsliste, Zugangsdaten oder Datenverkehrsstatistiken.</p>
+        <p>ProxyPAC erfordert kein ProxyPAC-Konto und enthält weder Werbung noch Tracking oder vom Entwickler betriebene Analyse- oder Absturzberichtsdienste.</p>
+      </section>
+
+      <section>
+        <h3>2. Auf Ihrem Mac gespeicherte Daten</h3>
+        <ul>
+          <li>Namen der Upstream-Proxys, Serveradressen, Ports, optionale Benutzernamen, lokale Dienstports, Domains der Zulassungsliste und App-Einstellungen werden im lokalen App-Speicher von ProxyPAC gespeichert.</li>
+          <li>Passwörter für Upstream-Proxys werden im macOS Keychain gespeichert. Passwörter werden nicht in die erzeugte PAC-Datei geschrieben.</li>
+          <li>Die erzeugte PAC-Datei wird im lokalen Application Support-Verzeichnis von ProxyPAC gespeichert.</li>
+          <li>Während das Fenster „Aktive Domains“ geöffnet ist, hält ProxyPAC die Namen der erfolgreich über einen Proxy weitergeleiteten Domains und die Anzahl der weitergeleiteten Bytes im Arbeitsspeicher vor. Vollständige URLs, Anfrage-Header, Anfrageinhalte, Antwortinhalte oder Seiteninhalte werden nicht aufgezeichnet. Diese Statistiken werden gelöscht, sobald das Fenster geschlossen oder die App beendet wird.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. Netzwerkverbindungen</h3>
+        <p>Der PAC-Dienst und der lokale Weiterleitungsdienst lauschen ausschließlich auf <code>127.0.0.1</code> und sind daher nur für Software verfügbar, die auf Ihrem Mac ausgeführt wird. Datenverkehr, der Ihrer Zulassungsliste entspricht, wird an den von Ihnen konfigurierten Upstream-Proxy weitergeleitet. Wenn die automatische Ausfallsicherung aktiviert ist, kann ProxyPAC Ihre anderen gespeicherten Upstream-Proxys in der Reihenfolge der Liste ausprobieren.</p>
+        <p>ProxyPAC leitet keinen Datenverkehr über einen vom Entwickler betriebenen Server. Ein Upstream-Proxy empfängt den Datenverkehr, den Sie darüber weiterleiten lassen, und kann möglicherweise Zielhosts sowie Metadaten des Datenverkehrs einsehen. Bei unverschlüsseltem HTTP-Datenverkehr kann der Betreiber möglicherweise auch die Inhalte einsehen. Es gelten die eigenen Bedingungen und Datenschutzpraktiken des jeweiligen Upstream-Proxy-Betreibers. Zugangsdaten zur Proxy-Authentifizierung werden nur dann an den von Ihnen konfigurierten Upstream-Proxy gesendet, wenn eine Authentifizierung erforderlich ist.</p>
+        <p>StoreKit kommuniziert mit Apple, um Produktinformationen zu ProxyPAC Pro zu laden, Käufe abzuwickeln und wiederherzustellen sowie die Nutzungsberechtigung zu überprüfen. Für die Verarbeitung dieser Informationen durch Apple gilt die <a href="https://www.apple.com/legal/privacy/de-ww/" rel="external noreferrer">Datenschutzrichtlinie von Apple</a>.</p>
+      </section>
+
+      <section>
+        <h3>4. Speicherdauer und Ihre Kontrollmöglichkeiten</h3>
+        <p>Lokale Einstellungen verbleiben auf Ihrem Mac, bis Sie sie ändern oder entfernen. Wenn Sie einen Upstream-Proxy entfernen und die Änderung anwenden, werden auch dessen gespeicherte Zugangsdaten aus dem macOS Keychain entfernt. Statistiken zu aktiven Domains werden ausschließlich im Arbeitsspeicher vorgehalten und wie oben beschrieben gelöscht.</p>
+        <p>In der App können Sie ProxyPAC anhalten, Domains aus der Zulassungsliste und Upstream-Proxys entfernen, die automatische Ausfallsicherung deaktivieren und den Start bei der Anmeldung ausschalten. Da ProxyPAC diese Daten nicht an den Entwickler sendet, befindet sich auf keinem Entwickler-Server eine zu löschende Kopie.</p>
+      </section>
+
+      <section>
+        <h3>5. Datenschutz von Kindern</h3>
+        <p>ProxyPAC ist nicht darauf ausgelegt, personenbezogene Daten von Personen zu erheben; dies schließt Kinder ein.</p>
+      </section>
+
+      <section>
+        <h3>6. Änderungen und Kontakt</h3>
+        <p>Wenn diese Richtlinie geändert wird, werden die aktualisierte Fassung und das neue Wirksamkeitsdatum auf dieser Seite veröffentlicht. Bei Fragen zum Datenschutz können Sie den Entwickler über das <a href="https://github.com/legionxiong" rel="external noreferrer">GitHub-Profil von legionxiong</a> kontaktieren.</p>
+      </section>
+    </article>
+
+    <article class="policy" id="french" lang="fr" aria-labelledby="french-policy-title">
+      <div class="policy-heading">
+        <h2 id="french-policy-title">Politique de confidentialité de ProxyPAC</h2>
+        <span class="muted">Français</span>
+      </div>
+      <p class="effective-date">Date d’entrée en vigueur : 24 août 2026</p>
+
+      <section>
+        <h3>1. Présentation</h3>
+        <p>ProxyPAC fonctionne localement sur votre Mac. Le développeur ne collecte, ne reçoit, ne vend ni ne partage, par l’intermédiaire de ProxyPAC, votre activité de navigation, votre configuration de proxy, votre liste d’autorisation, vos identifiants ou vos statistiques de trafic.</p>
+        <p>ProxyPAC ne nécessite pas de compte ProxyPAC et n’intègre ni publicité, ni suivi, ni service d’analyse ou de rapport de plantage exploité par le développeur.</p>
+      </section>
+
+      <section>
+        <h3>2. Données stockées sur votre Mac</h3>
+        <ul>
+          <li>Les noms des proxys en amont, leurs adresses de serveur et ports, les noms d’utilisateur facultatifs, les ports des services locaux, les domaines de la liste d’autorisation et les préférences de l’app sont enregistrés dans le stockage local de ProxyPAC. Ces données servent uniquement à générer la configuration PAC, à faire fonctionner les services locaux, à relayer le trafic autorisé et à appliquer vos préférences.</li>
+          <li>Les mots de passe des proxys en amont sont enregistrés dans le trousseau macOS et servent uniquement à s’authentifier auprès du proxy que vous avez configuré. Ils ne sont pas inscrits dans le fichier PAC généré.</li>
+          <li>Le fichier PAC généré est enregistré dans le dossier Application Support local de ProxyPAC afin que le service PAC puisse le fournir à votre Mac.</li>
+          <li>Lorsque la fenêtre « Domaines actifs » est ouverte, ProxyPAC conserve en mémoire les noms de domaine ayant effectivement transité par le proxy ainsi que le nombre d’octets relayés, uniquement afin d’afficher les domaines actifs et les débits en temps réel. ProxyPAC n’enregistre ni les URL complètes, ni les en-têtes ou corps des requêtes, ni les en-têtes ou corps des réponses, ni le contenu des pages. Ces statistiques sont effacées lorsque la fenêtre est fermée ou lorsque l’app quitte.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. Connexions réseau</h3>
+        <p>Le service PAC et le relais local écoutent uniquement sur <code>127.0.0.1</code> et ne sont donc accessibles qu’aux logiciels exécutés sur votre Mac. Le trafic correspondant à votre liste d’autorisation est relayé vers le proxy en amont que vous avez configuré. Lorsque le basculement automatique est activé, ProxyPAC peut essayer vos autres proxys enregistrés dans l’ordre de la liste.</p>
+        <p>ProxyPAC n’achemine pas votre trafic par un serveur exploité par le développeur et n’intègre aucun SDK tiers d’analyse, de publicité ou de suivi. Le proxy en amont que vous choisissez reçoit le trafic que vous décidez de lui confier et peut voir les hôtes de destination ainsi que des métadonnées de trafic. Pour du trafic HTTP non chiffré, son opérateur peut également être en mesure de consulter le contenu transmis. Les conditions et pratiques de confidentialité propres à cet opérateur s’appliquent. Le développeur ne contrôle pas cet opérateur et vous devez choisir un fournisseur auquel vous faites confiance. Les identifiants d’authentification du proxy sont transmis uniquement au proxy que vous avez configuré, lorsqu’une authentification est nécessaire.</p>
+        <p>StoreKit communique avec Apple afin de charger les informations relatives à ProxyPAC Pro, de traiter ou restaurer les achats et de vérifier le droit d’accès. ProxyPAC utilise le résultat de cette vérification uniquement pour déterminer si les fonctionnalités Pro doivent être déverrouillées et ne l’envoie pas au développeur. Le traitement de ces informations par Apple est régi par la <a href="https://www.apple.com/fr/legal/privacy/" rel="external noreferrer">Politique de confidentialité d’Apple</a>.</p>
+      </section>
+
+      <section>
+        <h3>4. Conservation des données et vos contrôles</h3>
+        <p>Les réglages locaux restent sur votre Mac jusqu’à ce que vous les modifiiez ou les supprimiez. La suppression d’un proxy en amont, une fois la modification appliquée, supprime également son identifiant enregistré dans le trousseau macOS. Les statistiques de la fenêtre « Domaines actifs » existent uniquement en mémoire et sont effacées comme indiqué ci-dessus.</p>
+        <p>Vous pouvez à tout moment arrêter ProxyPAC, supprimer des domaines de la liste d’autorisation ou des proxys en amont, désactiver le basculement automatique et empêcher l’ouverture de l’app à la connexion. ProxyPAC ne demande aucun consentement pour une collecte par le développeur, car ces données ne lui sont pas envoyées. Il n’existe donc aucune copie sur un serveur du développeur dont vous devriez demander la suppression.</p>
+      </section>
+
+      <section>
+        <h3>5. Confidentialité des enfants</h3>
+        <p>ProxyPAC n’est pas conçu pour recueillir des informations personnelles, que ce soit auprès d’enfants ou de toute autre personne.</p>
+      </section>
+
+      <section>
+        <h3>6. Modifications et contact</h3>
+        <p>Si la présente politique est modifiée, sa nouvelle version et sa date d’entrée en vigueur seront publiées sur cette page. Pour toute question relative à la confidentialité, contactez le développeur par l’intermédiaire du <a href="https://github.com/legionxiong" rel="external noreferrer">profil GitHub de legionxiong</a>.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2026 ProxyPAC. This page uses no cookies, analytics, or third-party assets.</p>
+  </footer>
+  <script>
+    (() => {
+      if (window.location.hash) return;
+
+      const localeTargets = {
+        de: "german",
+        fr: "french",
+        ja: "japanese",
+        ko: "korean"
+      };
+      const preferredLocales = navigator.languages || [navigator.language || "en"];
+      let targetID = "english";
+
+      for (const locale of preferredLocales) {
+        const normalized = locale.toLowerCase();
+        if (normalized.startsWith("zh-hant") || /zh-(tw|hk|mo)/.test(normalized)) {
+          targetID = "traditional-chinese";
+          break;
+        }
+        if (normalized.startsWith("zh")) {
+          targetID = "simplified-chinese";
+          break;
+        }
+
+        const baseLanguage = normalized.split("-")[0];
+        if (localeTargets[baseLanguage]) {
+          targetID = localeTargets[baseLanguage];
+          break;
+        }
+        if (baseLanguage === "en") break;
+      }
+
+      if (targetID !== "english") {
+        requestAnimationFrame(() => document.getElementById(targetID)?.scrollIntoView());
+      }
+    })();
+  </script>
+</body>
+</html>
