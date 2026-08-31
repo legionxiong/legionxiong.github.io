@@ -103,15 +103,15 @@
       <div class="support-grid">
         <article class="support-card">
           <h3>ProxyPAC does not provide a proxy server</h3>
-          <p>Add an HTTP upstream proxy that you are authorized to use. ProxyPAC serves the local PAC file and forwards allowlisted traffic to the proxy you configure.</p>
+          <p>Add an HTTP upstream proxy that you are authorized to use. ProxyPAC serves the local PAC file and forwards traffic selected by Allowlist or Global Proxy mode to the proxy you configure.</p>
         </article>
         <article class="support-card">
           <h3>Enable automatic proxy configuration</h3>
-          <p>Copy the PAC URL from ProxyPAC, open macOS Network Settings, select your active service, then enable Automatic Proxy Configuration and paste the URL.</p>
+          <p>Copy the PAC URL from ProxyPAC, open macOS Network Settings, select your active service, turn off Web Proxy (HTTP), Secure Web Proxy (HTTPS), and SOCKS Proxy, then enable Automatic Proxy Configuration and paste the URL.</p>
         </article>
         <article class="support-card">
-          <h3>A domain is not using the proxy</h3>
-          <p>Add the hostname—not a full URL—to the allowlist, save the settings, and reconnect the app or browser making the request. Existing connections may continue using their previous route.</p>
+          <h3>A domain is using the wrong route</h3>
+          <p>In Allowlist mode, add the hostname—not a full URL—to the allowlist. In Global Proxy mode, remove it from the exclusion list if it should use the proxy. Reconnect the app or browser because existing connections may continue using their previous route.</p>
         </article>
         <article class="support-card">
           <h3>ProxyPAC Pro is not available</h3>
