@@ -349,7 +349,7 @@
           <li>Upstream proxy passwords are stored in the macOS Keychain. Passwords are not written into the generated PAC file.</li>
           <li>The generated PAC file is stored in ProxyPAC's local Application Support directory.</li>
           <li>Smart Proxy learned entries contain only a normalized domain name and the time of its last successful proxy-routed request. A domain is learned only after its delayed upstream probe wins and the real request succeeds through that proxy. If both probes fail, nothing is learned.</li>
-          <li>A Domain Rules backup is created only when you export one. It contains a format version, export time, and allowlist domains, and is saved to the location you choose. It does not contain proxy credentials, Smart Proxy learning data, or traffic statistics.</li>
+          <li>An Allowlist backup is created only when you export one. It contains a format version, export time, and allowlist domains, and is saved to the location you choose. It does not contain proxy credentials, Smart Proxy learning data, or traffic statistics.</li>
           <li>When Domain Statistics is enabled, ProxyPAC keeps successfully proxied domain names, request methods, last-activity times, and forwarded byte counts in memory, including after the main window closes. It does not record full URLs, request headers, request bodies, response bodies, or page contents. These statistics are cleared when Domain Statistics is disabled or the app quits.</li>
         </ul>
       </section>
@@ -363,7 +363,7 @@
 
       <section>
         <h3>4. Retention and your controls</h3>
-        <p>Local settings remain on your Mac until you change or remove them. A Smart Proxy learned domain expires after 30 days without another successful proxy-routed request for that domain, and you can clear selected learned domains at any time. Removing an upstream proxy and applying the change also removes its saved credential from the macOS Keychain. Exported Domain Rules backups remain wherever you saved them until you delete them in Finder. Active Domains statistics are memory-only and are cleared as described above.</p>
+        <p>Local settings remain on your Mac until you change or remove them. A Smart Proxy learned domain expires after 30 days without another successful proxy-routed request for that domain, and you can clear selected learned domains at any time. Removing an upstream proxy and applying the change also removes its saved credential from the macOS Keychain. Exported Allowlist backups remain wherever you saved them until you delete them in Finder. Active Domains statistics are memory-only and are cleared as described above.</p>
         <p>You can stop ProxyPAC, remove allowlist or learned domains and upstream proxies, turn off automatic failover, and disable launch at login from the app. Inactive exclusion-list data retained from a prerelease build is not used by the current routing modes. Because ProxyPAC does not send this data to the developer, there is no developer server containing a copy to delete.</p>
       </section>
 
