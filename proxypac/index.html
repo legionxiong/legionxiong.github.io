@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ProxyPAC is a local-first macOS app for allowlist or global proxy routing, upstream switching, authenticated proxies, and automatic failover.">
+  <meta name="description" content="ProxyPAC is a local-first macOS app for allowlist and Smart Proxy routing, rule backups, authenticated proxies, and automatic failover.">
   <meta name="color-scheme" content="light dark">
   <title>ProxyPAC · Selective proxy routing for macOS</title>
   <link rel="canonical" href="https://legionxiong.github.io/proxypac/">
@@ -189,9 +189,9 @@
           <img src="/assets/proxypac-icon.svg" alt="ProxyPAC app icon" width="66" height="66">
           <p><strong>ProxyPAC</strong>macOS 13+ · Native utility</p>
         </div>
-        <p class="eyebrow">Flexible proxy routing</p>
+        <p class="eyebrow">Focused proxy routing</p>
         <h1 class="proxy-title">Route traffic on your terms.</h1>
-        <p class="hero-copy">Use a strict domain allowlist or global proxy mode with exclusions, then switch safely between upstream proxies you control.</p>
+        <p class="hero-copy">Route selected domains through a strict allowlist, or let Smart Proxy learn which public destinations need an upstream proxy you control.</p>
         <div class="hero-actions">
           <a class="button primary" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a>
           <a class="button" href="/proxypac/privacy.html">Privacy policy</a>
@@ -206,7 +206,7 @@
         </div>
         <div class="menu-info">
           <span>PAC http://127.0.0.1:8899/proxy.pac</span>
-          <span>Routing · Allowlist or Global Proxy</span>
+          <span>Routing · Allowlist · 2 domains</span>
           <span>Local forwarder · Active</span>
         </div>
         <div class="menu-picker"><span>Switch upstream proxy</span><strong>Work proxy</strong></div>
@@ -217,14 +217,14 @@
     <section class="section-block shell" id="features">
       <p class="section-kicker">Designed for control</p>
       <h2 class="section-title">The routing you need, without a system-wide tunnel.</h2>
-      <p class="section-intro">ProxyPAC serves a local PAC file and forwards traffic selected by your routing mode through proxies that you provide.</p>
+      <p class="section-intro">ProxyPAC serves a local PAC file and forwards traffic selected by Allowlist or Smart Proxy routing through proxies that you provide.</p>
       <div class="features-grid">
-        <article class="feature-card"><span class="card-number">01</span><h3>Two routing modes</h3><p>Proxy only allowlisted domains, or use Global Proxy while keeping local networks and your exclusion list direct.</p></article>
-        <article class="feature-card"><span class="card-number">02</span><h3>Fast proxy switching</h3><p>Save multiple upstream proxies and make a new selection effective for new connections immediately.</p></article>
-        <article class="feature-card"><span class="card-number">03</span><h3>Automatic failover</h3><p>Try saved proxies in order when the current one cannot reach a proxied destination—without falling back to direct.</p></article>
-        <article class="feature-card"><span class="card-number">04</span><h3>Authenticated proxies</h3><p>Use optional usernames and passwords, with passwords kept in the macOS Keychain instead of the PAC file.</p></article>
-        <article class="feature-card"><span class="card-number">05</span><h3>Local domain statistics</h3><p>View proxied domains and per-domain byte counts in memory. Statistics continue after the main window closes and clear when disabled or when the app quits.</p></article>
-        <article class="feature-card"><span class="card-number">06</span><h3>Native Mac experience</h3><p>Use the main app for setup and service control, with a lightweight menu bar companion for status and quick proxy switching.</p></article>
+        <article class="feature-card"><span class="card-number">01</span><h3>Strict allowlist routing</h3><p>Only domains you add, including their subdomains, use the system PAC proxy. Unmatched traffic remains direct.</p></article>
+        <article class="feature-card"><span class="card-number">02</span><h3>Smart Proxy learning</h3><p>Try unknown public destinations directly, start a proxy probe after an adaptive delay, and remember the proxy only after it successfully carries the request.</p></article>
+        <article class="feature-card"><span class="card-number">03</span><h3>Fast proxy switching</h3><p>Save multiple upstream proxies and make a new selection effective for new connections immediately.</p></article>
+        <article class="feature-card"><span class="card-number">04</span><h3>Authentication and failover</h3><p>Keep proxy passwords in macOS Keychain and optionally try saved proxies in order without falling back to direct.</p></article>
+        <article class="feature-card"><span class="card-number">05</span><h3>Rule backups</h3><p>Export and restore allowlist rules without including proxy credentials, app bookmarks, or traffic statistics.</p></article>
+        <article class="feature-card"><span class="card-number">06</span><h3>Local domain statistics</h3><p>View proxied domains and byte counts in memory. Statistics clear when disabled or when the app quits.</p></article>
       </div>
     </section>
 
@@ -233,8 +233,8 @@
       <h2 class="section-title">Set it once. Switch when you need.</h2>
       <div class="steps">
         <article class="step"><h3>Add your proxy</h3><p>Enter an upstream proxy server and port. Authentication is optional.</p></article>
-        <article class="step"><h3>Choose a routing mode</h3><p>Build an allowlist, or select Global Proxy and optionally add domains that should remain direct.</p></article>
-        <article class="step"><h3>Enable automatic proxy configuration</h3><p>Paste the local PAC URL into macOS Network Settings, then keep ProxyPAC running in the menu bar.</p></article>
+        <article class="step"><h3>Choose a routing mode</h3><p>Use Allowlist for explicit rules, or Smart Proxy to learn which public destinations need the proxy. Allowlisted domains always use it.</p></article>
+        <article class="step"><h3>Enable automatic proxy configuration</h3><p>Paste the local PAC URL into macOS Network Settings, then keep ProxyPAC running.</p></article>
       </div>
     </section>
 
