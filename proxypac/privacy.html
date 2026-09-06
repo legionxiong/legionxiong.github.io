@@ -327,7 +327,7 @@
       <p class="eyebrow">No tracking · No developer analytics</p>
       <h1>Privacy Policy</h1>
       <p class="lede">ProxyPAC is a local-first macOS utility. Your proxy settings and traffic statistics stay on your Mac and are not sent to the developer.</p>
-      <p class="effective-date">Effective date: September 4, 2026</p>
+      <p class="effective-date">Effective date: 2026-09-06</p>
     </div>
 
     <article class="policy" aria-labelledby="english-policy-title">
@@ -337,45 +337,30 @@
       </div>
 
       <section>
-        <h3>1. Overview</h3>
-        <p>ProxyPAC runs locally on your Mac. The developer does not collect, receive, sell, or share your browsing activity, proxy configuration, domain routing rules, credentials, or traffic statistics through ProxyPAC.</p>
-        <p>ProxyPAC does not require a ProxyPAC account and does not include advertising, tracking, or developer-operated analytics or crash-reporting services.</p>
+        <h3>Summary</h3>
+        <p>ProxyPAC runs locally on your Mac. It does not operate an analytics service, create a ProxyPAC account, or send activity-domain statistics to the developer.</p>
       </section>
 
       <section>
-        <h3>2. Data stored on your Mac</h3>
-        <ul>
-          <li>Upstream proxy names, server addresses, ports, optional usernames, local service ports, allowlist domains, retained inactive legacy routing settings, and app preferences are stored in ProxyPAC's local app storage.</li>
-          <li>Upstream proxy passwords are stored in the macOS Keychain. Passwords are not written into the generated PAC file.</li>
-          <li>The generated PAC file is stored in ProxyPAC's local Application Support directory.</li>
-          <li>Smart Proxy learned entries contain only a normalized domain name and the time of its last successful proxy-routed request. A domain is learned only after its delayed upstream probe wins and the real request succeeds through that proxy. If both probes fail, nothing is learned.</li>
-          <li>An Allowlist backup is created only when you export one. It contains a format version, export time, and allowlist domains, and is saved to the location you choose. It does not contain proxy credentials, Smart Proxy learning data, or traffic statistics.</li>
-          <li>When Domain Statistics is enabled, ProxyPAC keeps successfully proxied domain names, request methods, last-activity times, and forwarded byte counts in memory, including after the main window closes. It does not record full URLs, request headers, request bodies, response bodies, or page contents. These statistics are cleared when Domain Statistics is disabled or the app quits.</li>
-        </ul>
+        <h3>Proxy Configuration</h3>
+        <p>Proxy addresses, usernames, ports, rules and preferences are stored on your Mac. Smart Proxy also stores learned domain names, why a proxy route was learned, and the times of the last proxy activity and connection validation. Learned records expire after 30 days without proxy activity. Proxy passwords are stored in macOS Keychain and are never included in the PAC file. These settings and records are not sent to the developer.</p>
       </section>
 
       <section>
-        <h3>3. Network connections</h3>
-        <p>The PAC service and local forwarder listen only on <code>127.0.0.1</code>. Localhost, <code>.localhost</code> names, <code>127.0.0.0/8</code>, <code>::1</code>, and IPv4-mapped loopback addresses always connect directly and cannot be sent to an upstream proxy. In Smart Proxy, allowlisted domains use the upstream proxy without a direct test. For other unknown public destinations, a direct probe starts immediately; if it has not succeeded after an adaptive delay, an upstream CONNECT probe starts in parallel. The delay starts at 300 ms and adapts between 100 and 600 ms based on recent outcomes. The probes do not send the client's URL, request headers, cookies, or body. The upstream probe sends the destination host and port plus configured proxy authorization; standard HTTPS and WSS direct probes perform only a TLS handshake. The first successful route carries the real request once. A domain is learned only after the upstream route wins and the real request succeeds; if both probes fail, it remains unknown and is tried again later. Bypass Local Network is on by default, so local host names, link-local and private IPv4/IPv6 addresses, and domains resolving to private addresses also connect directly. Turning it off lets those non-loopback destinations follow the selected routing mode; loopback destinations remain direct. Other local software can connect to the loopback forwarder, so use ProxyPAC only on a Mac whose local software you trust. Automatic failover may try other saved upstream proxies in list order.</p>
-        <p>ProxyPAC does not route traffic through a server operated by the developer. An upstream proxy receives the traffic you choose to route through it and may observe destination hosts and traffic metadata. For unencrypted HTTP traffic, its operator may also be able to view content. The upstream proxy operator's own terms and privacy practices apply. Proxy authentication credentials are sent only to the upstream proxy you configured when authentication is required.</p>
-        <p>StoreKit communicates with Apple to load ProxyPAC Pro product information, process purchases, restore purchases, and verify entitlement. Apple's handling of that information is governed by <a href="https://www.apple.com/legal/privacy" rel="external noreferrer">Apple's Privacy Policy</a>.</p>
+        <h3>Active Domains and Traffic</h3>
+        <p>When Active Domains is turned on, ProxyPAC keeps domain names, request methods, last-activity times, and byte counts for traffic successfully sent through the upstream proxy in memory, including while its window is closed. Direct connections are excluded. Full URLs, request headers, request bodies, and response content are not recorded. The in-memory statistics are cleared when Active Domains is turned off or the app quits.</p>
       </section>
 
       <section>
-        <h3>4. Retention and your controls</h3>
-        <p>Local settings remain on your Mac until you change or remove them. A Smart Proxy learned domain expires after 30 days without another successful proxy-routed request for that domain, and you can clear selected learned domains at any time. Removing an upstream proxy and applying the change also removes its saved credential from the macOS Keychain. Exported Allowlist backups remain wherever you saved them until you delete them in Finder. Active Domains statistics are memory-only and are cleared as described above.</p>
-        <p>You can stop ProxyPAC, remove allowlist or learned domains and upstream proxies, turn off automatic failover, and disable launch at login from the app. Inactive exclusion-list data retained from a prerelease build is not used by the current routing modes. Because ProxyPAC does not send this data to the developer, there is no developer server containing a copy to delete.</p>
+        <h3>Network Connections</h3>
+        <p>The local PAC service and forwarder listen only on 127.0.0.1. Traffic is sent directly to destinations or through the upstream proxies you configure. Smart Proxy may check direct and proxy connectivity, including limited background checks after a direct connection succeeds. These checks can contact the destination and your upstream proxy even when the actual request uses a direct connection. Checks do not send the client’s URL path, cookies or request body, and do not replay the client’s request. The upstream receives the target domain, port and any configured proxy authentication. ProxyPAC does not decrypt HTTPS or secure WebSocket content. Other local software can use the forwarder and its configured credentials. HTTP proxy authentication is not encrypted in transit; use a trusted network or local upstream. Apple processes purchases and restoration through StoreKit.</p>
       </section>
 
       <section>
-        <h3>5. Children's privacy</h3>
-        <p>ProxyPAC is not designed to collect personal information from anyone, including children.</p>
+        <h3>Your Control</h3>
+        <p>You can pause routing, quit the app, delete rules or proxies, clear selected learned domains, turn off Domain Statistics, and disable launch at login. Turning off Domain Statistics or quitting clears in-memory activity statistics; learned records remain until cleared or expired. Removing an upstream proxy and applying the change also removes its saved credentials. Allowlist backups contain rules and backup metadata only. Contact the developer below with privacy questions.</p>
       </section>
-
-      <section>
-        <h3>6. Changes and contact</h3>
-        <p>If this policy changes, the updated version and effective date will be published on this page. For privacy questions, contact the developer at <a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a>.</p>
-      </section>
+      <p><a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a></p>
     </article>
 
     <article class="policy" id="simplified-chinese" lang="zh-Hans" aria-labelledby="chinese-policy-title">
@@ -383,48 +368,33 @@
         <h2 id="chinese-policy-title">ProxyPAC 隐私政策</h2>
         <span class="muted">简体中文</span>
       </div>
-      <p class="effective-date">生效日期：2026 年 9 月 4 日</p>
+      <p class="effective-date">2026-09-06</p>
 
       <section>
-        <h3>1. 概述</h3>
-        <p>ProxyPAC 在你的 Mac 本地运行。开发者不会通过 ProxyPAC 收集、接收、出售或分享你的浏览活动、代理配置、域名路由规则、认证信息或流量统计。</p>
-        <p>ProxyPAC 不要求创建 ProxyPAC 账户，也不包含广告、跟踪、开发者运营的分析服务或崩溃报告服务。</p>
+        <h3>摘要</h3>
+        <p>ProxyPAC 在你的 Mac 本地运行，不提供分析服务、不创建 ProxyPAC 账户，也不会将活跃域名统计发送给开发者。</p>
       </section>
 
       <section>
-        <h3>2. 保存在 Mac 上的数据</h3>
-        <ul>
-          <li>上游代理名称、服务器地址、端口、可选用户名、本地服务端口、白名单域名、保留但不生效的旧版路由设置及 App 偏好设置保存在 ProxyPAC 的本地 App 存储中。</li>
-          <li>上游代理密码存储在 macOS 钥匙串中，不会写入生成的 PAC 文件。</li>
-          <li>生成的 PAC 文件保存在 ProxyPAC 本地的 Application Support 目录中。</li>
-          <li>智能代理学习记录仅包含规范化域名及该域名最后一次成功通过代理转发的时间。只有延迟启动的上游探测胜出且真实请求通过该代理成功后才会学习域名；若两路探测均失败，则不会学习。</li>
-          <li>只有在你主动导出时才会创建 Domain Rules 备份。备份包含格式版本、导出时间和白名单域名，并保存在你选择的位置；不包含代理凭据、智能代理学习数据或流量统计。</li>
-          <li>开启“域名统计”后，ProxyPAC 会在内存中保存成功走代理的域名、请求方法、最后活动时间及转发字节数，即使主窗口关闭也会继续保留。它不会记录完整 URL、请求头、请求正文、响应正文或网页内容。关闭“域名统计”或退出 App 时，这些统计会被清除。</li>
-        </ul>
+        <h3>代理配置</h3>
+        <p>代理地址、用户名、端口、规则和偏好设置保存在你的 Mac 上。智能代理还会保存已学习域名、学习代理路由的原因，以及最近代理活动和连接验证的时间。连续 30 天无代理活动的学习记录会过期。代理密码保存在 macOS 钥匙串中，不会写入 PAC 文件。这些设置和记录不会发送给开发者。</p>
       </section>
 
       <section>
-        <h3>3. 网络连接</h3>
-        <p>PAC 服务与本地转发器仅监听 <code>127.0.0.1</code>。localhost、以 <code>.localhost</code> 结尾的名称、<code>127.0.0.0/8</code>、<code>::1</code> 及 IPv4 映射的回环地址始终直连，不能发送至上游代理。在智能代理模式中，白名单域名不经直连探测，直接使用上游代理。对于其他未知公共网络目标，直连探测会立即启动；若在自适应延迟后尚未成功，则并行启动上游 CONNECT 探测。延迟初始为 300 毫秒，并根据近期结果在 100 至 600 毫秒之间调整。探测不会发送客户端 URL、请求头、Cookie 或正文；上游探测会发送目标主机、端口及已配置的代理认证，标准 HTTPS 和 WSS 的直连探测仅执行 TLS 握手。首个成功的路由只承载一次真实请求。只有上游路由胜出且真实请求成功后才会学习域名；若两路探测均失败，该域名保持未知，并在以后重新尝试。“绕过局域网”默认开启，因此本地主机名、链路本地和私有 IPv4/IPv6 地址及解析到私有地址的域名也会直连。关闭后，这些非回环目标将遵循所选路由模式；回环目标仍始终直连。本机其他软件可以连接回环转发器，因此请只在信任本机软件的 Mac 上使用 ProxyPAC。启用自动故障切换后，可能按列表顺序尝试其他已保存的上游代理。</p>
-        <p>ProxyPAC 不会把流量发送到开发者运营的服务器。上游代理会接收你选择经其转发的流量，并可能看到目标主机和流量元数据；对于未加密的 HTTP 流量，其运营者还可能看到传输内容。相应上游代理运营者的条款及隐私政策适用。需要认证时，代理认证信息只会发送给你配置的上游代理。</p>
-        <p>StoreKit 会与 Apple 通信，以加载 ProxyPAC Pro 商品信息、处理和恢复购买并验证权益。Apple 对相关信息的处理适用 <a href="https://www.apple.com/legal/privacy" rel="external noreferrer">Apple 隐私政策</a>。</p>
+        <h3>活跃域名与流量</h3>
+        <p>开启活跃域名后，ProxyPAC 会在内存中保留成功通过上游代理传输的域名、请求方法、最近活动时间和字节数，即使窗口关闭也会继续记录。直连流量不会纳入统计。完整 URL、请求头、请求正文及响应内容均不会被记录。关闭活跃域名或退出 App 时，内存统计会被清除。</p>
       </section>
 
       <section>
-        <h3>4. 保存期限与用户控制</h3>
-        <p>本地设置会保留在你的 Mac 上，直到你修改或移除。某个智能代理学习域名连续 30 天没有再次成功通过代理转发后会过期，你也可以随时清除选中的学习域名。移除上游代理并应用更改后，其保存的认证信息也会从 macOS 钥匙串中删除。导出的 Domain Rules 备份会保留在你选择的位置，直到你在 Finder 中删除。“活跃域名”统计仅存在于内存，并会按上述方式清除。</p>
-        <p>你可以在 App 中停止 ProxyPAC、移除白名单或学习域名和上游代理、关闭自动故障切换，以及禁止登录后启动。预发布版本遗留的非活动排除列表数据不会参与当前路由模式。由于 ProxyPAC 不会将这些数据发送给开发者，因此开发者服务器上没有相应副本需要删除。</p>
+        <h3>网络连接</h3>
+        <p>本地 PAC 服务和转发器仅监听 127.0.0.1。流量会直接发送至目标，或通过你配置的上游代理转发。智能代理可能检查直连和代理的连通性，包括在直连成功后进行有限的后台检查。因此，即使实际请求直连，检查仍可能联系目标服务器和你的上游代理。检查不发送客户端的 URL 路径、Cookie 或请求体，也不会重放客户端请求。上游会收到目标域名、端口及已配置的代理认证信息。ProxyPAC 不解密 HTTPS 或安全 WebSocket 内容。本机其他软件可以使用转发器及其配置的凭据。HTTP 代理认证在传输中不加密，请使用可信网络或本地上游。购买和恢复内购由 Apple 通过 StoreKit 处理。</p>
       </section>
 
       <section>
-        <h3>5. 儿童隐私</h3>
-        <p>ProxyPAC 的设计不会收集任何人的个人信息，其中也包括儿童。</p>
+        <h3>你的选择与控制</h3>
+        <p>你可以暂停转发、退出 app、删除规则或代理、清除选中的已学习域名、关闭域名统计，以及关闭登录启动。关闭域名统计或退出会清除内存中的活动统计；学习记录会保留至手动清除或过期。移除上游代理并应用修改后，其保存的凭据也会删除。白名单备份仅包含规则和备份元数据。如有隐私问题，可通过下方联系方式联系开发者。</p>
       </section>
-
-      <section>
-        <h3>6. 政策变更与联系</h3>
-        <p>如果本政策发生变化，更新后的版本和生效日期将在此页面发布。如有隐私相关问题，可通过 <a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a> 邮箱联系开发者。</p>
-      </section>
+      <p><a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a></p>
     </article>
 
     <article class="policy" id="traditional-chinese" lang="zh-Hant" aria-labelledby="traditional-chinese-policy-title">
@@ -432,48 +402,33 @@
         <h2 id="traditional-chinese-policy-title">ProxyPAC 隱私權政策</h2>
         <span class="muted">繁體中文</span>
       </div>
-      <p class="effective-date">生效日期：2026 年 9 月 4 日</p>
+      <p class="effective-date">2026-09-06</p>
 
       <section>
-        <h3>1. 概述</h3>
-        <p>ProxyPAC 會在你的 Mac 本機上執行。開發者不會透過 ProxyPAC 蒐集、接收、出售或分享你的瀏覽活動、代理伺服器設定、網域路由規則、認證資訊或流量統計資料。</p>
-        <p>ProxyPAC 不要求建立 ProxyPAC 帳號，也不含廣告、追蹤功能，或由開發者營運的分析與當機回報服務。</p>
+        <h3>摘要</h3>
+        <p>ProxyPAC 會在您的 Mac 上本機執行，不會營運分析服務、建立 ProxyPAC 帳號，也不會將作用中網域統計傳送給開發者。</p>
       </section>
 
       <section>
-        <h3>2. 儲存在 Mac 上的資料</h3>
-        <ul>
-          <li>上游代理伺服器名稱、伺服器位址、連接埠、選填的使用者名稱、本機服務連接埠、允許清單網域、保留但不生效的舊版路由設定及 App 偏好設定，均儲存在 ProxyPAC 的本機 App 儲存空間中。</li>
-          <li>上游代理伺服器密碼儲存在 macOS Keychain 中。密碼不會寫入產生的 PAC 檔案。</li>
-          <li>產生的 PAC 檔案儲存在 ProxyPAC 本機的 Application Support 目錄中。</li>
-          <li>智慧代理學習記錄只包含標準化網域及該網域最後一次成功透過代理轉送的時間。只有延遲啟動的上游探測勝出且真實要求透過該代理成功後才會學習網域；若兩路探測皆失敗則不會學習。</li>
-          <li>只有在你主動匯出時才會建立 Domain Rules 備份。備份包含格式版本、匯出時間及允許清單網域，並儲存在你選擇的位置；不包含代理憑證、智慧代理學習資料或流量統計。</li>
-          <li>啟用「網域統計」後，ProxyPAC 會在記憶體中保留成功透過代理伺服器連線的網域名稱、要求方法、最後活動時間及轉送位元組數，即使關閉主視窗也會繼續保留。ProxyPAC 不會記錄完整 URL、要求標頭、要求本文、回應本文或網頁內容。停用「網域統計」或結束 App 時，這些統計資料即會清除。</li>
-        </ul>
+        <h3>代理伺服器設定</h3>
+        <p>代理位址、使用者名稱、連接埠、規則與偏好設定儲存在你的 Mac 上。智慧代理也會儲存已學習網域、學習代理路由的原因，以及最近代理活動與連線驗證的時間。連續 30 天無代理活動的學習記錄會過期。代理密碼儲存在 macOS 鑰匙圈中，不會寫入 PAC 檔案。這些設定與記錄不會傳送給開發者。</p>
       </section>
 
       <section>
-        <h3>3. 網路連線</h3>
-        <p>PAC 服務與本機轉送器僅監聽 <code>127.0.0.1</code>。localhost、以 <code>.localhost</code> 結尾的名稱、<code>127.0.0.0/8</code>、<code>::1</code> 及 IPv4 對映的回環位址始終直接連線，不能傳送至上游代理。在智慧代理模式中，允許清單網域不經直連探測，直接使用上游代理。對於其他未知公用網路目標，直連探測會立即啟動；若在自適應延遲後尚未成功，則並行啟動上游 CONNECT 探測。延遲初始為 300 毫秒，並依近期結果在 100 至 600 毫秒之間調整。探測不會傳送用戶端 URL、要求標頭、Cookie 或本文；上游探測會傳送目標主機、連接埠及已設定的代理認證，標準 HTTPS 與 WSS 的直連探測只執行 TLS 交握。第一個成功的路由只承載一次真實要求。只有上游路由勝出且真實要求成功後才會學習網域；若兩路探測皆失敗，該網域保持未知，並在稍後重新嘗試。「略過區域網路」預設啟用，因此本機主機名稱、鏈路本機和私人 IPv4/IPv6 位址及解析至私人位址的網域也會直接連線。停用後，這些非回環目標將遵循所選路由模式；回環目標仍始終直接連線。本機其他軟體可以連線至回環轉送器，因此請只在信任本機軟體的 Mac 上使用 ProxyPAC。啟用自動容錯移轉後，可能依清單順序嘗試其他已儲存的上游代理。</p>
-        <p>ProxyPAC 不會將流量路由至由開發者營運的伺服器。上游代理伺服器會接收你選擇透過其路由的流量，並可能得知目的地主機及流量中繼資料。對於未加密的 HTTP 流量，其營運者亦可能查看傳輸內容。該上游代理伺服器營運者本身的條款與隱私權規範適用於此類資料。需要認證時，代理伺服器認證資訊只會傳送至你所設定的上游代理伺服器。</p>
-        <p>StoreKit 會與 Apple 通訊，以載入 ProxyPAC Pro 產品資訊、處理購買、回復購買項目及驗證使用權。Apple 對相關資訊的處理方式受 <a href="https://www.apple.com/legal/privacy" rel="external noreferrer">Apple 隱私權政策</a>規範。</p>
+        <h3>作用中網域與流量</h3>
+        <p>開啟作用中網域後，ProxyPAC 會在記憶體中保留成功透過上游代理傳輸的網域、要求方法、最近活動時間及位元組數，即使視窗關閉也會繼續記錄。直連流量不會納入統計。完整 URL、要求標頭、要求本文及回應內容均不會被記錄。關閉作用中網域或結束 App 時，記憶體統計會被清除。</p>
       </section>
 
       <section>
-        <h3>4. 資料保留與你的控制權</h3>
-        <p>本機設定會保留在你的 Mac 上，直到你加以變更或移除。某個智慧代理學習網域連續 30 天沒有再次成功透過代理轉送後會到期，你也可以隨時清除選取的學習網域。移除上游代理並套用變更後，其儲存的認證資訊也會從 macOS Keychain 中刪除。匯出的 Domain Rules 備份會保留在你選擇的位置，直到你在 Finder 中刪除。「作用中網域」統計資料僅存在於記憶體中，並會依上述方式清除。</p>
-        <p>你可以在 App 中停止 ProxyPAC、移除允許清單或學習網域和上游代理、關閉自動容錯移轉，以及停用登入時啟動。預發行版本遺留的非作用中排除清單資料不會用於目前的路由模式。由於 ProxyPAC 不會將這些資料傳送給開發者，因此開發者的伺服器上沒有需要刪除的資料副本。</p>
+        <h3>網路連線</h3>
+        <p>本機 PAC 服務與轉發器僅監聽 127.0.0.1。流量會直接傳送至目標，或透過你設定的上游代理轉發。智慧代理可能檢查直接連線與代理的連通性，包括在直接連線成功後進行有限的背景檢查。因此，即使實際請求直接連線，檢查仍可能聯絡目標伺服器與你的上游代理。檢查不傳送用戶端的 URL 路徑、Cookie 或請求本文，也不會重送用戶端請求。上游會收到目標網域、連接埠及已設定的代理驗證資訊。ProxyPAC 不解密 HTTPS 或安全 WebSocket 內容。本機其他軟體可使用轉發器及其設定的憑證。HTTP 代理驗證在傳輸中不加密，請使用可信網路或本機上游。購買與回復內購由 Apple 透過 StoreKit 處理。</p>
       </section>
 
       <section>
-        <h3>5. 兒童隱私權</h3>
-        <p>ProxyPAC 的設計不會蒐集任何人的個人資訊，包括兒童的個人資訊。</p>
+        <h3>您的控制權</h3>
+        <p>你可以暫停轉發、結束 app、刪除規則或代理、清除選取的已學習網域、關閉網域統計，以及停用登入啟動。關閉網域統計或結束 app 會清除記憶體中的活動統計；學習記錄會保留至手動清除或過期。移除上游代理並套用變更後，其儲存的憑證也會刪除。允許清單備份僅包含規則與備份中繼資料。如有隱私問題，可透過下方聯絡方式聯絡開發者。</p>
       </section>
-
-      <section>
-        <h3>6. 政策變更與聯絡方式</h3>
-        <p>如本政策有所變更，更新後的版本及生效日期將公布於本頁面。如有隱私權相關問題，請透過 <a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a> 電子郵件聯絡開發者。</p>
-      </section>
+      <p><a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a></p>
     </article>
 
     <article class="policy" id="japanese" lang="ja" aria-labelledby="japanese-policy-title">
@@ -481,48 +436,33 @@
         <h2 id="japanese-policy-title">ProxyPAC プライバシーポリシー</h2>
         <span class="muted">日本語</span>
       </div>
-      <p class="effective-date">発効日：2026年9月4日</p>
+      <p class="effective-date">2026-09-06</p>
 
       <section>
-        <h3>1. 概要</h3>
-        <p>ProxyPAC はお使いの Mac 上でローカルに動作します。開発者が ProxyPAC を通じて、閲覧履歴、プロキシ設定、ドメインルーティングルール、認証情報、または通信量の統計情報を収集、受信、販売、もしくは共有することはありません。</p>
-        <p>ProxyPAC の利用に ProxyPAC アカウントは必要ありません。また、広告、トラッキング、開発者が運営する分析サービス、またはクラッシュレポートサービスは含まれていません。</p>
+        <h3>概要</h3>
+        <p>ProxyPAC は Mac 上でローカルに動作します。解析サービスを運用せず、ProxyPAC アカウントを作成せず、アクティブなドメインの統計を開発者に送信しません。</p>
       </section>
 
       <section>
-        <h3>2. Mac に保存されるデータ</h3>
-        <ul>
-          <li>上流プロキシの名前、サーバーアドレス、ポート、任意で設定するユーザー名、ローカルサービスポート、許可リストのドメイン、保持されている無効な旧ルーティング設定、および App の環境設定は、ProxyPAC のローカル App ストレージに保存されます。</li>
-          <li>上流プロキシのパスワードは macOS Keychain に保存されます。パスワードが生成された PAC ファイルに書き込まれることはありません。</li>
-          <li>生成された PAC ファイルは、ProxyPAC のローカル Application Support ディレクトリに保存されます。</li>
-          <li>スマートプロキシの学習記録には、正規化されたドメイン名と、そのドメインの要求が最後にプロキシ経由で成功した時刻だけが含まれます。遅延して開始した上流テストが勝ち、実際の要求がそのプロキシ経由で成功した場合にのみ学習します。両方のテストが失敗した場合は学習しません。</li>
-          <li>Domain Rules のバックアップは、ユーザーが明示的に書き出した場合にのみ作成されます。形式のバージョン、書き出し日時、許可リストのドメインが含まれ、ユーザーが選択した場所に保存されます。プロキシ認証情報、スマートプロキシの学習データ、通信量の統計情報は含まれません。</li>
-          <li>「ドメイン統計」を有効にすると、ProxyPAC はプロキシ経由の通信に成功したドメイン名、リクエストメソッド、最終アクティビティ時刻、転送バイト数を、メインウインドウを閉じた後もメモリ上に保持します。完全な URL、リクエストヘッダー、リクエスト本文、レスポンス本文、またはページの内容は記録しません。これらの統計情報は、「ドメイン統計」を無効にするか App を終了すると消去されます。</li>
-        </ul>
+        <h3>プロキシ構成</h3>
+        <p>プロキシのアドレス、ユーザー名、ポート、ルール、設定は Mac 内に保存されます。スマートプロキシは学習したドメイン名、プロキシ経路を学習した理由、最終プロキシ通信時刻と接続検証時刻も保存します。プロキシ通信が 30 日間ない学習記録は期限切れになります。プロキシのパスワードは macOS キーチェーンに保存され、PAC ファイルには含まれません。これらの設定や記録を開発者に送信することはありません。</p>
       </section>
 
       <section>
-        <h3>3. ネットワーク接続</h3>
-        <p>PAC サービスとローカルフォワーダーは <code>127.0.0.1</code> のみで待ち受けます。localhost、<code>.localhost</code> で終わる名前、<code>127.0.0.0/8</code>、<code>::1</code>、IPv4 射影ループバックアドレスは常に直接接続し、上流プロキシへ送信できません。スマートプロキシでは、許可リストのドメインは直接テストせず上流プロキシを使用します。その他の未知の公開先では直接テストを直ちに開始し、適応型遅延後も成功していなければ上流 CONNECT テストを並行して開始します。遅延は 300 ミリ秒から始まり、最近の結果に基づいて 100～600 ミリ秒の間で調整されます。テストはクライアントの URL、要求ヘッダー、Cookie、本文を送信しません。上流テストは接続先ホストとポート、および設定済みのプロキシ認証を送信し、標準 HTTPS と WSS の直接テストは TLS ハンドシェイクのみを行います。最初に成功した経路が実際の要求を一度だけ転送します。上流経路が勝ち、実際の要求が成功した場合にのみドメインを学習します。両方のテストが失敗した場合、ドメインは未知のまま後で再試行されます。「ローカルネットワークをバイパス」は既定で有効なため、ローカルホスト名、リンクローカル、プライベート IPv4/IPv6、およびプライベートアドレスへ解決されるドメインも直接接続します。無効にすると、これらのループバック以外の接続先は選択したルーティングモードに従いますが、ループバック接続先は引き続き直接接続します。他のローカルソフトウェアもループバックフォワーダーへ接続できるため、信頼できる Mac でのみ ProxyPAC を使用してください。自動フェイルオーバーでは、保存済みの他の上流プロキシをリスト順に試す場合があります。</p>
-        <p>ProxyPAC が開発者の運営するサーバーを経由して通信を転送することはありません。上流プロキシは、ユーザーが当該プロキシを経由するよう指定した通信を受信するため、接続先ホストや通信のメタデータを確認できる場合があります。暗号化されていない HTTP 通信については、その運営者が内容を確認できる場合もあります。当該上流プロキシ運営者の利用条件およびプライバシーに関する方針が適用されます。プロキシ認証が必要な場合、認証情報はユーザーが設定した上流プロキシにのみ送信されます。</p>
-        <p>StoreKit は Apple と通信し、ProxyPAC Pro の製品情報の取得、購入処理、購入の復元、および利用資格の確認を行います。Apple による当該情報の取り扱いには、<a href="https://www.apple.com/legal/privacy" rel="external noreferrer">Apple のプライバシーポリシー</a>が適用されます。</p>
+        <h3>アクティブなドメインと通信量</h3>
+        <p>アクティブドメインをオンにすると、上流プロキシ経由で正常に送信された通信のドメイン名、リクエストメソッド、最終アクティビティ時刻、バイト数が、ウインドウを閉じている間もメモリに保持されます。直接接続は除外されます。完全な URL、ヘッダー、本文、レスポンス内容は記録されません。オフにするか App を終了すると統計は消去されます。</p>
       </section>
 
       <section>
-        <h3>4. 保存期間とユーザーによる管理</h3>
-        <p>ローカル設定は、ユーザーが変更または削除するまで Mac に保存されます。学習済みドメインは、そのドメインの要求がプロキシ経由で再び成功しないまま 30 日経過すると期限切れになり、選択した学習済みドメインをいつでも消去できます。上流プロキシを削除して変更を適用すると、その認証情報も macOS Keychain から削除されます。書き出した Domain Rules バックアップは、Finder で削除するまで選択した場所に残ります。「アクティブなドメイン」の統計情報はメモリ上にのみ存在し、前述のとおり消去されます。</p>
-        <p>App では、ProxyPAC の停止、許可リストまたは学習済みドメインと上流プロキシの削除、自動フェイルオーバーの無効化、およびログイン時の起動の無効化を行えます。プレリリース版から保持された無効な除外リストのデータは、現在のルーティングモードには使用されません。ProxyPAC はこれらのデータを開発者へ送信しないため、削除対象となる複製が開発者のサーバーに保存されることはありません。</p>
+        <h3>ネットワーク接続</h3>
+        <p>ローカル PAC サービスと転送サービスは 127.0.0.1 のみで待ち受けます。通信は宛先に直接送られるか、設定した上流プロキシを経由します。スマートプロキシは直接接続とプロキシ接続を確認する場合があり、直接接続に成功した後も限定的なバックグラウンド確認を行うことがあります。そのため、実際のリクエストが直接接続でも、確認のため宛先と上流プロキシに接続する場合があります。確認ではクライアントの URL パス、Cookie、リクエスト本文を送らず、リクエストを再送しません。上流プロキシには宛先ドメイン、ポート、設定済みのプロキシ認証情報が送られます。ProxyPAC は HTTPS や安全な WebSocket の内容を復号しません。他のローカルソフトウェアは転送サービスと設定済み認証情報を利用できます。HTTP プロキシ認証は転送中に暗号化されないため、信頼できるネットワークかローカル上流を使用してください。購入と復元は Apple が StoreKit を通じて処理します。</p>
       </section>
 
       <section>
-        <h3>5. 子どものプライバシー</h3>
-        <p>ProxyPAC は、子どもを含むいかなる個人からも個人情報を収集するようには設計されていません。</p>
+        <h3>ユーザーによる管理</h3>
+        <p>転送の一時停止、app の終了、ルールやプロキシの削除、選択した学習ドメインの消去、ドメイン統計の無効化、ログイン時起動の無効化ができます。ドメイン統計を無効にするか app を終了すると、メモリ内の通信統計が消去されます。学習記録は消去するか期限切れになるまで保持されます。上流プロキシを削除して変更を適用すると、その保存済み認証情報も削除されます。許可リストのバックアップにはルールとバックアップ情報のみが含まれます。プライバシーに関するご質問は下記までお問い合わせください。</p>
       </section>
-
-      <section>
-        <h3>6. 本ポリシーの変更とお問い合わせ</h3>
-        <p>本ポリシーを変更した場合、更新後の内容と発効日をこのページに掲載します。プライバシーに関するご質問は、<a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a> までメールでお問い合わせください。</p>
-      </section>
+      <p><a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a></p>
     </article>
 
     <article class="policy" id="korean" lang="ko" aria-labelledby="korean-policy-title">
@@ -530,48 +470,33 @@
         <h2 id="korean-policy-title">ProxyPAC 개인정보 처리방침</h2>
         <span class="muted">한국어</span>
       </div>
-      <p class="effective-date">시행일: 2026년 9월 4일</p>
+      <p class="effective-date">2026-09-06</p>
 
       <section>
-        <h3>1. 개요</h3>
-        <p>ProxyPAC은 사용자의 Mac에서 로컬로 실행됩니다. 개발자는 ProxyPAC을 통해 사용자의 탐색 활동, 프록시 구성, 도메인 라우팅 규칙, 인증 정보 또는 트래픽 통계를 수집, 수신, 판매하거나 공유하지 않습니다.</p>
-        <p>ProxyPAC은 ProxyPAC 계정을 요구하지 않으며 광고, 추적, 개발자가 운영하는 분석 서비스 또는 충돌 보고 서비스를 포함하지 않습니다.</p>
+        <h3>요약</h3>
+        <p>ProxyPAC은 Mac에서 로컬로 실행됩니다. 분석 서비스를 운영하거나 ProxyPAC 계정을 생성하지 않으며 활성 도메인 통계를 개발자에게 전송하지 않습니다.</p>
       </section>
 
       <section>
-        <h3>2. Mac에 저장되는 데이터</h3>
-        <ul>
-          <li>업스트림 프록시 이름, 서버 주소, 포트, 선택적 사용자 이름, 로컬 서비스 포트, 허용 목록 도메인, 보존되지만 비활성 상태인 이전 라우팅 설정과 앱 환경설정은 ProxyPAC의 로컬 앱 저장소에 저장됩니다.</li>
-          <li>업스트림 프록시 비밀번호는 macOS Keychain에 저장됩니다. 비밀번호는 생성된 PAC 파일에 기록되지 않습니다.</li>
-          <li>생성된 PAC 파일은 ProxyPAC의 로컬 Application Support 디렉터리에 저장됩니다.</li>
-          <li>스마트 프록시 학습 항목에는 정규화된 도메인 이름과 해당 도메인의 요청이 마지막으로 프록시를 통해 성공한 시간만 포함됩니다. 지연된 업스트림 테스트가 이기고 실제 요청이 해당 프록시를 통해 성공한 경우에만 학습합니다. 두 테스트가 모두 실패하면 학습하지 않습니다.</li>
-          <li>Domain Rules 백업은 사용자가 직접 내보낼 때만 생성됩니다. 형식 버전, 내보낸 시간 및 허용 목록 도메인을 포함하며 사용자가 선택한 위치에 저장됩니다. 프록시 인증 정보, 스마트 프록시 학습 데이터 또는 트래픽 통계는 포함하지 않습니다.</li>
-          <li>“도메인 통계”를 켜면 ProxyPAC은 프록시를 통해 성공적으로 전달된 도메인 이름, 요청 메서드, 마지막 활동 시간 및 전달된 바이트 수를 메인 창을 닫은 후에도 메모리에 보관합니다. 전체 URL, 요청 헤더, 요청 본문, 응답 본문 또는 페이지 콘텐츠는 기록하지 않습니다. 이러한 통계는 “도메인 통계”를 끄거나 앱을 종료하면 삭제됩니다.</li>
-        </ul>
+        <h3>프록시 구성</h3>
+        <p>프록시 주소, 사용자 이름, 포트, 규칙과 설정은 Mac에 저장됩니다. 스마트 프록시는 학습한 도메인 이름, 프록시 경로를 학습한 이유, 마지막 프록시 활동 및 연결 검증 시간도 저장합니다. 프록시 활동이 30일간 없으면 학습 기록이 만료됩니다. 프록시 비밀번호는 macOS 키체인에 저장되며 PAC 파일에는 포함되지 않습니다. 이러한 설정과 기록은 개발자에게 전송되지 않습니다.</p>
       </section>
 
       <section>
-        <h3>3. 네트워크 연결</h3>
-        <p>PAC 서비스와 로컬 포워더는 <code>127.0.0.1</code>에서만 수신합니다. localhost, <code>.localhost</code>로 끝나는 이름, <code>127.0.0.0/8</code>, <code>::1</code> 및 IPv4 매핑 루프백 주소는 항상 직접 연결되며 업스트림 프록시로 보낼 수 없습니다. 스마트 프록시에서는 허용 목록 도메인을 직접 테스트하지 않고 업스트림 프록시로 보냅니다. 다른 알 수 없는 공개 대상은 직접 테스트를 즉시 시작하고, 적응형 지연 후에도 성공하지 않으면 업스트림 CONNECT 테스트를 병렬로 시작합니다. 지연은 300ms에서 시작하고 최근 결과에 따라 100~600ms 사이에서 조정됩니다. 테스트는 클라이언트 URL, 요청 헤더, 쿠키 또는 본문을 보내지 않습니다. 업스트림 테스트는 대상 호스트와 포트 및 구성된 프록시 인증을 보내며, 표준 HTTPS와 WSS 직접 테스트는 TLS 핸드셰이크만 수행합니다. 먼저 성공한 경로가 실제 요청을 한 번만 전달합니다. 업스트림 경로가 이기고 실제 요청이 성공한 경우에만 도메인을 학습합니다. 두 테스트가 모두 실패하면 도메인은 알 수 없는 상태로 남아 나중에 다시 시도됩니다. 로컬 네트워크 우회는 기본적으로 켜져 있으므로 로컬 호스트 이름, 링크 로컬 및 사설 IPv4/IPv6 주소와 사설 주소로 해석되는 도메인도 직접 연결됩니다. 이 설정을 끄면 이러한 비루프백 대상은 선택한 라우팅 모드를 따르지만 루프백 대상은 계속 직접 연결됩니다. 이 Mac의 다른 로컬 소프트웨어도 루프백 포워더에 연결할 수 있으므로 신뢰할 수 있는 Mac에서만 ProxyPAC을 사용하십시오. 자동 장애 조치는 저장된 다른 업스트림 프록시를 목록 순서대로 시도할 수 있습니다.</p>
-        <p>ProxyPAC은 개발자가 운영하는 서버를 통해 트래픽을 라우팅하지 않습니다. 업스트림 프록시는 사용자가 해당 프록시를 통해 라우팅하도록 선택한 트래픽을 수신하며 대상 호스트와 트래픽 메타데이터를 확인할 수 있습니다. 암호화되지 않은 HTTP 트래픽의 경우 해당 운영자가 콘텐츠도 확인할 수 있습니다. 업스트림 프록시 운영자 자체의 약관 및 개인정보 처리방침이 적용됩니다. 프록시 인증 정보는 인증이 필요한 경우에만 사용자가 구성한 업스트림 프록시로 전송됩니다.</p>
-        <p>StoreKit은 ProxyPAC Pro 제품 정보를 불러오고, 구매를 처리 및 복원하며, 사용 권한을 확인하기 위해 Apple과 통신합니다. 해당 정보에 대한 Apple의 처리는 <a href="https://www.apple.com/legal/privacy" rel="external noreferrer">Apple 개인정보 처리방침</a>의 적용을 받습니다.</p>
+        <h3>활성 도메인 및 트래픽</h3>
+        <p>활성 도메인을 켜면 업스트림 프록시를 통해 성공적으로 전송된 트래픽의 도메인 이름, 요청 메서드, 마지막 활동 시간 및 바이트 수를 창이 닫혀 있는 동안에도 메모리에 보관합니다. 직접 연결은 제외됩니다. 전체 URL, 요청 헤더, 요청 본문 및 응답 내용은 기록하지 않습니다. 이 통계는 기능을 끄거나 앱을 종료하면 삭제됩니다.</p>
       </section>
 
       <section>
-        <h3>4. 보관 기간 및 사용자의 제어 권한</h3>
-        <p>로컬 설정은 사용자가 변경하거나 삭제할 때까지 Mac에 유지됩니다. 학습된 도메인은 해당 도메인의 요청이 프록시를 통해 다시 성공하지 않은 채 30일이 지나면 만료되며 선택한 학습 도메인을 언제든지 삭제할 수 있습니다. 업스트림 프록시를 제거하고 변경 사항을 적용하면 저장된 인증 정보도 macOS Keychain에서 삭제됩니다. 내보낸 Domain Rules 백업은 Finder에서 삭제할 때까지 선택한 위치에 남습니다. 활성 도메인 통계는 메모리에만 존재하며 위에서 설명한 방식으로 삭제됩니다.</p>
-        <p>앱에서 ProxyPAC을 중지하고, 허용 목록 또는 학습 도메인과 업스트림 프록시를 제거하고, 자동 장애 조치를 끄고, 로그인 시 실행을 비활성화할 수 있습니다. 시험 출시 버전에서 보존된 비활성 제외 목록 데이터는 현재 라우팅 모드에 사용되지 않습니다. ProxyPAC은 이러한 데이터를 개발자에게 전송하지 않으므로 개발자 서버에는 삭제할 사본이 존재하지 않습니다.</p>
+        <h3>네트워크 연결</h3>
+        <p>로컬 PAC 서비스와 전달기는 127.0.0.1에서만 수신합니다. 트래픽은 대상으로 직접 전송되거나 설정한 업스트림 프록시를 거칩니다. 스마트 프록시는 직접 연결과 프록시 연결 상태를 확인할 수 있으며 직접 연결 성공 후에도 제한된 백그라운드 확인을 수행할 수 있습니다. 따라서 실제 요청이 직접 연결되더라도 확인 과정에서 대상 서버와 업스트림 프록시에 연결할 수 있습니다. 확인 시 클라이언트의 URL 경로, 쿠키, 요청 본문을 보내지 않으며 클라이언트 요청을 재전송하지 않습니다. 업스트림에는 대상 도메인, 포트 및 설정한 프록시 인증 정보가 전달됩니다. ProxyPAC은 HTTPS나 보안 WebSocket 내용을 복호화하지 않습니다. 다른 로컬 소프트웨어는 전달기와 설정된 인증 정보를 사용할 수 있습니다. HTTP 프록시 인증은 전송 중 암호화되지 않으므로 신뢰할 수 있는 네트워크나 로컬 업스트림을 사용하세요. 구매와 복원은 Apple이 StoreKit을 통해 처리합니다.</p>
       </section>
 
       <section>
-        <h3>5. 아동의 개인정보 보호</h3>
-        <p>ProxyPAC은 아동을 포함하여 누구의 개인정보도 수집하도록 설계되지 않았습니다.</p>
+        <h3>사용자 선택 및 제어</h3>
+        <p>전달 일시 정지, app 종료, 규칙이나 프록시 삭제, 선택한 학습 도메인 지우기, 도메인 통계 끄기 및 로그인 시 시작 해제가 가능합니다. 도메인 통계를 끄거나 app을 종료하면 메모리의 활동 통계가 삭제되지만 학습 기록은 직접 지우거나 만료될 때까지 유지됩니다. 업스트림 프록시를 삭제하고 변경 사항을 적용하면 저장된 인증 정보도 삭제됩니다. 허용 목록 백업에는 규칙과 백업 메타데이터만 포함됩니다. 개인정보 관련 문의는 아래 연락처로 보내 주세요.</p>
       </section>
-
-      <section>
-        <h3>6. 변경 및 문의</h3>
-        <p>본 방침이 변경되는 경우 업데이트된 버전과 시행일이 이 페이지에 게시됩니다. 개인정보 보호와 관련된 문의는 <a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a> 이메일로 개발자에게 연락해 주십시오.</p>
-      </section>
+      <p><a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a></p>
     </article>
 
     <article class="policy" id="german" lang="de" aria-labelledby="german-policy-title">
@@ -579,48 +504,33 @@
         <h2 id="german-policy-title">Datenschutzrichtlinie für ProxyPAC</h2>
         <span class="muted">Deutsch</span>
       </div>
-      <p class="effective-date">Gültig ab: 4. September 2026</p>
+      <p class="effective-date">2026-09-06</p>
 
       <section>
-        <h3>1. Überblick</h3>
-        <p>ProxyPAC wird lokal auf Ihrem Mac ausgeführt. Der Entwickler erhebt, empfängt, verkauft oder teilt über ProxyPAC weder Ihre Browseraktivitäten noch Ihre Proxy-Konfiguration, Domain-Routingregeln, Zugangsdaten oder Datenverkehrsstatistiken.</p>
-        <p>ProxyPAC erfordert kein ProxyPAC-Konto und enthält weder Werbung noch Tracking oder vom Entwickler betriebene Analyse- oder Absturzberichtsdienste.</p>
+        <h3>Zusammenfassung</h3>
+        <p>ProxyPAC wird lokal auf deinem Mac ausgeführt. Es betreibt keinen Analysedienst, erstellt kein ProxyPAC-Konto und sendet keine Statistiken zu aktiven Domains an den Entwickler.</p>
       </section>
 
       <section>
-        <h3>2. Auf Ihrem Mac gespeicherte Daten</h3>
-        <ul>
-          <li>Namen der Upstream-Proxys, Serveradressen, Ports, optionale Benutzernamen, lokale Dienstports, Domains der Zulassungsliste, beibehaltene inaktive ältere Routing-Einstellungen und App-Einstellungen werden im lokalen App-Speicher von ProxyPAC gespeichert.</li>
-          <li>Passwörter für Upstream-Proxys werden im macOS Keychain gespeichert. Passwörter werden nicht in die erzeugte PAC-Datei geschrieben.</li>
-          <li>Die erzeugte PAC-Datei wird im lokalen Application Support-Verzeichnis von ProxyPAC gespeichert.</li>
-          <li>Gelernte Einträge des intelligenten Proxys enthalten nur einen normalisierten Domainnamen und den Zeitpunkt der letzten erfolgreichen Proxy-Anfrage für diese Domain. Eine Domain wird nur gelernt, wenn die verzögert gestartete Upstream-Prüfung gewinnt und die echte Anfrage über diesen Proxy erfolgreich ist. Schlagen beide Prüfungen fehl, wird nichts gelernt.</li>
-          <li>Eine Sicherung der Domainregeln wird nur erstellt, wenn Sie sie exportieren. Sie enthält Formatversion, Exportzeitpunkt und Domains der Zulassungsliste und wird am gewählten Ort gespeichert. Sie enthält keine Proxy-Zugangsdaten, Lerndaten des intelligenten Proxys oder Datenverkehrsstatistiken.</li>
-          <li>Wenn die Domainstatistik aktiviert ist, hält ProxyPAC die Namen der erfolgreich über einen Proxy weitergeleiteten Domains, Anfragemethoden, Zeitpunkte der letzten Aktivität und die Anzahl der weitergeleiteten Bytes auch nach dem Schließen des Hauptfensters im Arbeitsspeicher vor. Vollständige URLs, Anfrage-Header, Anfrageinhalte, Antwortinhalte oder Seiteninhalte werden nicht aufgezeichnet. Diese Statistiken werden gelöscht, sobald die Domainstatistik deaktiviert oder die App beendet wird.</li>
-        </ul>
+        <h3>Proxy-Konfiguration</h3>
+        <p>Proxy-Adressen, Benutzernamen, Ports, Regeln und Einstellungen werden auf Ihrem Mac gespeichert. Smart Proxy speichert außerdem gelernte Domainnamen, den Grund für die gelernte Proxy-Route sowie die Zeitpunkte der letzten Proxy-Aktivität und Verbindungsprüfung. Lernwerte verfallen nach 30 Tagen ohne Proxy-Aktivität. Proxy-Passwörter liegen im macOS-Schlüsselbund und werden niemals in die PAC-Datei aufgenommen. Diese Einstellungen und Aufzeichnungen werden nicht an den Entwickler gesendet.</p>
       </section>
 
       <section>
-        <h3>3. Netzwerkverbindungen</h3>
-        <p>PAC-Dienst und lokaler Forwarder lauschen nur auf <code>127.0.0.1</code>. Localhost, Namen mit <code>.localhost</code>, <code>127.0.0.0/8</code>, <code>::1</code> und IPv4-abgebildete Loopback-Adressen verbinden sich immer direkt und können nicht an einen Upstream-Proxy gesendet werden. Im intelligenten Proxy verwenden Domains der Zulassungsliste den Upstream-Proxy ohne direkte Prüfung. Für andere unbekannte öffentliche Ziele startet sofort eine direkte Prüfung; war sie nach einer adaptiven Verzögerung nicht erfolgreich, startet parallel eine Upstream-CONNECT-Prüfung. Die Verzögerung beginnt bei 300 ms und passt sich anhand der letzten Ergebnisse zwischen 100 und 600 ms an. Die Prüfungen senden weder URL, Anfrage-Header, Cookies noch Inhalt des Clients. Die Upstream-Prüfung sendet Zielhost und -port sowie die konfigurierte Proxy-Autorisierung; direkte Prüfungen für Standard-HTTPS und WSS führen nur einen TLS-Handshake aus. Die erste erfolgreiche Route überträgt die echte Anfrage genau einmal. Eine Domain wird nur gelernt, wenn die Upstream-Route gewinnt und die echte Anfrage erfolgreich ist. Schlagen beide Prüfungen fehl, bleibt sie unbekannt und wird später erneut versucht. Lokales Netzwerk umgehen ist standardmäßig aktiviert, daher verbinden sich auch lokale Hostnamen, Link-Local- und private IPv4/IPv6-Adressen sowie Domains mit privater Zieladresse direkt. Wird die Option deaktiviert, folgen diese Nicht-Loopback-Ziele dem ausgewählten Routingmodus; Loopback-Ziele bleiben direkt. Andere lokale Software kann den Loopback-Forwarder erreichen. Verwenden Sie ProxyPAC daher nur auf einem Mac, dessen lokale Software Sie vertrauen. Die automatische Ausfallsicherung kann andere gespeicherte Upstream-Proxys in Listenreihenfolge ausprobieren.</p>
-        <p>ProxyPAC leitet keinen Datenverkehr über einen vom Entwickler betriebenen Server. Ein Upstream-Proxy empfängt den Datenverkehr, den Sie darüber weiterleiten lassen, und kann möglicherweise Zielhosts sowie Metadaten des Datenverkehrs einsehen. Bei unverschlüsseltem HTTP-Datenverkehr kann der Betreiber möglicherweise auch die Inhalte einsehen. Es gelten die eigenen Bedingungen und Datenschutzpraktiken des jeweiligen Upstream-Proxy-Betreibers. Zugangsdaten zur Proxy-Authentifizierung werden nur dann an den von Ihnen konfigurierten Upstream-Proxy gesendet, wenn eine Authentifizierung erforderlich ist.</p>
-        <p>StoreKit kommuniziert mit Apple, um Produktinformationen zu ProxyPAC Pro zu laden, Käufe abzuwickeln und wiederherzustellen sowie die Nutzungsberechtigung zu überprüfen. Für die Verarbeitung dieser Informationen durch Apple gilt die <a href="https://www.apple.com/legal/privacy" rel="external noreferrer">Datenschutzrichtlinie von Apple</a>.</p>
+        <h3>Aktive Domains und Datenverkehr</h3>
+        <p>Wenn Aktive Domains aktiviert ist, speichert ProxyPAC Domainnamen, Anfragemethoden, letzte Aktivitätszeiten und Bytezahlen für erfolgreich über den Upstream-Proxy gesendeten Datenverkehr im Arbeitsspeicher, auch bei geschlossenem Fenster. Direkte Verbindungen sind ausgeschlossen. Vollständige URLs, Anfrage-Header, Anfrageinhalte und Antworten werden nicht aufgezeichnet. Die Statistik wird beim Deaktivieren oder Beenden der App gelöscht.</p>
       </section>
 
       <section>
-        <h3>4. Speicherdauer und Ihre Kontrollmöglichkeiten</h3>
-        <p>Lokale Einstellungen verbleiben auf Ihrem Mac, bis Sie sie ändern oder entfernen. Eine gelernte Domain läuft ab, wenn 30 Tage lang keine weitere erfolgreiche Proxy-Anfrage für diese Domain erfolgt; ausgewählte gelernte Domains können Sie jederzeit löschen. Wenn Sie einen Upstream-Proxy entfernen und die Änderung anwenden, werden dessen Zugangsdaten aus dem macOS Keychain entfernt. Exportierte Domainregeln-Sicherungen bleiben am gewählten Ort, bis Sie sie im Finder löschen. Statistiken zu aktiven Domains werden ausschließlich im Arbeitsspeicher vorgehalten und wie oben beschrieben gelöscht.</p>
-        <p>In der App können Sie ProxyPAC anhalten, Domains der Zulassungsliste oder gelernte Domains und Upstream-Proxys entfernen, die automatische Ausfallsicherung deaktivieren und den Start bei der Anmeldung ausschalten. Inaktive Daten einer Ausschlussliste aus einer Vorabversion werden von den aktuellen Routingmodi nicht verwendet. Da ProxyPAC diese Daten nicht an den Entwickler sendet, befindet sich auf keinem Entwickler-Server eine zu löschende Kopie.</p>
+        <h3>Netzwerkverbindungen</h3>
+        <p>Der lokale PAC-Dienst und die Weiterleitung lauschen nur auf 127.0.0.1. Datenverkehr wird direkt zum Ziel oder über die von Ihnen eingerichteten Upstream-Proxys gesendet. Smart Proxy kann direkte und Proxy-Verbindungen prüfen, auch durch begrenzte Hintergrundprüfungen nach einer erfolgreichen Direktverbindung. Deshalb können Prüfungen das Ziel und Ihren Upstream-Proxy kontaktieren, selbst wenn die eigentliche Anfrage direkt übertragen wird. Dabei werden weder URL-Pfad, Cookies noch Anfrageinhalt des Clients gesendet; die Client-Anfrage wird nicht wiederholt. Der Upstream erhält Zieldomain, Port und gegebenenfalls konfigurierte Proxy-Anmeldedaten. ProxyPAC entschlüsselt keine HTTPS- oder sicheren WebSocket-Inhalte. Andere lokale Software kann die Weiterleitung und deren konfigurierte Zugangsdaten nutzen. HTTP-Proxy-Authentifizierung ist bei der Übertragung unverschlüsselt; verwenden Sie ein vertrauenswürdiges Netz oder einen lokalen Upstream. Apple verarbeitet Käufe und Wiederherstellungen über StoreKit.</p>
       </section>
 
       <section>
-        <h3>5. Datenschutz von Kindern</h3>
-        <p>ProxyPAC ist nicht darauf ausgelegt, personenbezogene Daten von Personen zu erheben; dies schließt Kinder ein.</p>
+        <h3>Deine Kontrolle</h3>
+        <p>Sie können die Weiterleitung pausieren, die App beenden, Regeln oder Proxys entfernen, ausgewählte gelernte Domains löschen, Domainstatistiken ausschalten und den Start bei Anmeldung deaktivieren. Ausschalten der Domainstatistiken oder Beenden der App löscht die Aktivitätsstatistik im Arbeitsspeicher; Lernwerte bleiben bis zur Löschung oder zum Ablauf erhalten. Entfernen eines Upstream-Proxys und Anwenden der Änderung löscht auch dessen gespeicherte Zugangsdaten. Allowlist-Backups enthalten nur Regeln und Backup-Metadaten. Bei Datenschutzfragen wenden Sie sich an die unten genannte Kontaktadresse.</p>
       </section>
-
-      <section>
-        <h3>6. Änderungen und Kontakt</h3>
-        <p>Wenn diese Richtlinie geändert wird, werden die aktualisierte Fassung und das neue Wirksamkeitsdatum auf dieser Seite veröffentlicht. Bei Fragen zum Datenschutz erreichen Sie den Entwickler per E-Mail unter <a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a>.</p>
-      </section>
+      <p><a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a></p>
     </article>
 
     <article class="policy" id="french" lang="fr" aria-labelledby="french-policy-title">
@@ -628,48 +538,33 @@
         <h2 id="french-policy-title">Politique de confidentialité de ProxyPAC</h2>
         <span class="muted">Français</span>
       </div>
-      <p class="effective-date">Date d’entrée en vigueur : 4 septembre 2026</p>
+      <p class="effective-date">2026-09-06</p>
 
       <section>
-        <h3>1. Présentation</h3>
-        <p>ProxyPAC fonctionne localement sur votre Mac. Le développeur ne collecte, ne reçoit, ne vend ni ne partage, par l’intermédiaire de ProxyPAC, votre activité de navigation, votre configuration de proxy, vos règles de routage de domaine, vos identifiants ou vos statistiques de trafic.</p>
-        <p>ProxyPAC ne nécessite pas de compte ProxyPAC et n’intègre ni publicité, ni suivi, ni service d’analyse ou de rapport de plantage exploité par le développeur.</p>
+        <h3>Résumé</h3>
+        <p>ProxyPAC s’exécute localement sur votre Mac. Il n’exploite aucun service d’analyse, ne crée aucun compte ProxyPAC et n’envoie au développeur aucune statistique sur les domaines actifs.</p>
       </section>
 
       <section>
-        <h3>2. Données stockées sur votre Mac</h3>
-        <ul>
-          <li>Les noms des proxys en amont, leurs adresses et ports, les noms d’utilisateur facultatifs, les ports des services locaux, les domaines de la liste d’autorisation, les anciens réglages de routage conservés mais inactifs et les préférences de l’app sont enregistrés dans le stockage local de ProxyPAC.</li>
-          <li>Les mots de passe des proxys en amont sont enregistrés dans le trousseau macOS et servent uniquement à s’authentifier auprès du proxy que vous avez configuré. Ils ne sont pas inscrits dans le fichier PAC généré.</li>
-          <li>Le fichier PAC généré est enregistré dans le dossier Application Support local de ProxyPAC afin que le service PAC puisse le fournir à votre Mac.</li>
-          <li>Les entrées apprises par le proxy intelligent contiennent uniquement un nom de domaine normalisé et l’heure de la dernière requête réussie via le proxy pour ce domaine. Un domaine n’est appris que si le test différé du proxy en amont gagne et que la requête réelle réussit via ce proxy. Si les deux tests échouent, rien n’est appris.</li>
-          <li>Une sauvegarde des règles de domaine n’est créée que lorsque vous l’exportez. Elle contient une version de format, l’heure d’exportation et les domaines de la liste d’autorisation, puis est enregistrée à l’emplacement choisi. Elle ne contient ni identifiants de proxy, ni données d’apprentissage du proxy intelligent, ni statistiques de trafic.</li>
-          <li>Lorsque les statistiques par domaine sont activées, ProxyPAC conserve en mémoire les noms de domaine ayant effectivement transité par le proxy, les méthodes de requête, les heures de dernière activité et le nombre d’octets relayés, y compris après la fermeture de la fenêtre principale. ProxyPAC n’enregistre ni les URL complètes, ni les en-têtes ou corps des requêtes, ni les en-têtes ou corps des réponses, ni le contenu des pages. Ces statistiques sont effacées lorsque les statistiques par domaine sont désactivées ou lorsque l’app quitte.</li>
-        </ul>
+        <h3>Configuration du proxy</h3>
+        <p>Les adresses proxy, noms d’utilisateur, ports, règles et préférences sont stockés sur votre Mac. Smart Proxy conserve aussi les noms de domaine appris, le motif du choix d’une route proxy et les dates de dernière activité proxy et de vérification de connexion. Les apprentissages expirent après 30 jours sans activité proxy. Les mots de passe proxy sont conservés dans le Trousseau macOS et ne figurent jamais dans le fichier PAC. Ces paramètres et données ne sont pas envoyés au développeur.</p>
       </section>
 
       <section>
-        <h3>3. Connexions réseau</h3>
-        <p>Le service PAC et le relais local écoutent uniquement sur <code>127.0.0.1</code>. Localhost, les noms se terminant par <code>.localhost</code>, <code>127.0.0.0/8</code>, <code>::1</code> et les adresses de bouclage IPv4 mappées restent toujours en connexion directe et ne peuvent pas être envoyés à un proxy en amont. En mode Proxy intelligent, les domaines autorisés utilisent le proxy sans test direct. Pour les autres destinations publiques inconnues, un test direct démarre immédiatement ; s’il n’a pas réussi après un délai adaptatif, un test CONNECT via le proxy démarre en parallèle. Le délai commence à 300 ms et s’adapte entre 100 et 600 ms selon les résultats récents. Les tests n’envoient ni l’URL, ni les en-têtes, ni les cookies, ni le corps de la requête du client. Le test en amont envoie l’hôte et le port de destination ainsi que l’autorisation proxy configurée ; les tests directs HTTPS et WSS standards effectuent seulement une négociation TLS. La première route réussie transporte une seule fois la requête réelle. Un domaine n’est appris que si la route en amont gagne et que la requête réelle réussit. Si les deux tests échouent, il reste inconnu et sera réessayé plus tard. Contourner le réseau local est activé par défaut : les noms d’hôtes locaux, les adresses link-local et IPv4/IPv6 privées, ainsi que les domaines résolus vers une adresse privée, restent également directs. Sa désactivation permet à ces destinations hors bouclage de suivre le mode de routage choisi ; les destinations de bouclage restent directes. D’autres logiciels locaux peuvent joindre le relais de bouclage ; utilisez donc ProxyPAC uniquement sur un Mac dont vous faites confiance aux logiciels locaux. Le basculement automatique peut essayer d’autres proxys enregistrés dans l’ordre de la liste.</p>
-        <p>ProxyPAC n’achemine pas votre trafic par un serveur exploité par le développeur et n’intègre aucun SDK tiers d’analyse, de publicité ou de suivi. Le proxy en amont que vous choisissez reçoit le trafic que vous décidez de lui confier et peut voir les hôtes de destination ainsi que des métadonnées de trafic. Pour du trafic HTTP non chiffré, son opérateur peut également être en mesure de consulter le contenu transmis. Les conditions et pratiques de confidentialité propres à cet opérateur s’appliquent. Le développeur ne contrôle pas cet opérateur et vous devez choisir un fournisseur auquel vous faites confiance. Les identifiants d’authentification du proxy sont transmis uniquement au proxy que vous avez configuré, lorsqu’une authentification est nécessaire.</p>
-        <p>StoreKit communique avec Apple afin de charger les informations relatives à ProxyPAC Pro, de traiter ou restaurer les achats et de vérifier le droit d’accès. ProxyPAC utilise le résultat de cette vérification uniquement pour déterminer si les fonctionnalités Pro doivent être déverrouillées et ne l’envoie pas au développeur. Le traitement de ces informations par Apple est régi par la <a href="https://www.apple.com/legal/privacy" rel="external noreferrer">Politique de confidentialité d’Apple</a>.</p>
+        <h3>Domaines actifs et trafic</h3>
+        <p>Lorsque Domaines actifs est activé, ProxyPAC conserve en mémoire les noms de domaine, les méthodes de requête, la dernière activité et le nombre d’octets du trafic envoyé avec succès par le proxy en amont, même si la fenêtre est fermée. Les connexions directes sont exclues. Les URL complètes, en-têtes, corps de requête et réponses ne sont pas enregistrés. Ces statistiques sont effacées à la désactivation ou à la fermeture de l’app.</p>
       </section>
 
       <section>
-        <h3>4. Conservation des données et vos contrôles</h3>
-        <p>Les réglages locaux restent sur votre Mac jusqu’à ce que vous les modifiiez ou supprimiez. Un domaine appris expire après 30 jours sans nouvelle requête réussie via le proxy pour ce domaine, et vous pouvez effacer à tout moment les domaines appris sélectionnés. La suppression d’un proxy en amont supprime également son identifiant du trousseau macOS. Les sauvegardes de règles de domaine exportées restent à l’emplacement choisi jusqu’à leur suppression dans le Finder. Les statistiques des domaines actifs existent uniquement en mémoire et sont effacées comme indiqué ci-dessus.</p>
-        <p>Vous pouvez arrêter ProxyPAC, supprimer des domaines de la liste d’autorisation ou des domaines appris et des proxys en amont, désactiver le basculement automatique et le lancement à la connexion. Les données inactives d’une liste d’exclusion conservées depuis une préversion ne sont pas utilisées par les modes de routage actuels. Ces données ne sont pas envoyées au développeur ; aucun serveur du développeur n’en conserve donc une copie.</p>
+        <h3>Connexions réseau</h3>
+        <p>Le service PAC local et le relais écoutent uniquement sur 127.0.0.1. Le trafic est envoyé directement aux destinations ou via les proxys amont que vous configurez. Smart Proxy peut vérifier les connexions directes et proxy, y compris par des vérifications limitées en arrière-plan après une connexion directe réussie. Ces vérifications peuvent donc contacter la destination et votre proxy amont même si la requête réelle passe en direct. Elles n’envoient ni chemin URL, ni cookies, ni corps de requête du client, et ne rejouent pas sa requête. Le proxy amont reçoit le domaine cible, le port et les éventuels identifiants proxy configurés. ProxyPAC ne déchiffre pas les contenus HTTPS ou WebSocket sécurisés. D’autres logiciels locaux peuvent utiliser le relais et ses identifiants configurés. L’authentification HTTP du proxy n’est pas chiffrée en transit ; utilisez un réseau fiable ou un proxy local. Apple traite les achats et restaurations via StoreKit.</p>
       </section>
 
       <section>
-        <h3>5. Confidentialité des enfants</h3>
-        <p>ProxyPAC n’est pas conçu pour recueillir des informations personnelles, que ce soit auprès d’enfants ou de toute autre personne.</p>
+        <h3>Vos choix</h3>
+        <p>Vous pouvez suspendre le routage, quitter l’app, supprimer des règles ou proxys, effacer les domaines appris sélectionnés, désactiver les statistiques de domaines et le lancement à l’ouverture de session. Désactiver les statistiques ou quitter l’app efface les statistiques d’activité en mémoire ; les apprentissages restent jusqu’à leur effacement ou leur expiration. Supprimer un proxy amont et appliquer la modification supprime aussi ses identifiants enregistrés. Les sauvegardes de la liste d’autorisation contiennent uniquement les règles et métadonnées de sauvegarde. Pour toute question de confidentialité, contactez le développeur ci-dessous.</p>
       </section>
-
-      <section>
-        <h3>6. Modifications et contact</h3>
-        <p>Si la présente politique est modifiée, sa nouvelle version et sa date d’entrée en vigueur seront publiées sur cette page. Pour toute question relative à la confidentialité, contactez le développeur par e-mail à <a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a>.</p>
-      </section>
+      <p><a href="mailto:legion.xiong@gmail.com">legion.xiong@gmail.com</a></p>
     </article>
   </main>
 
