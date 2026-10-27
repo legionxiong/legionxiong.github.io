@@ -100,6 +100,7 @@
     <section class="section-block shell" id="quick-help">
       <p class="section-kicker">Quick help</p>
       <h2 class="section-title">Start with the essentials.</h2>
+      <p>These instructions describe version 1.0.6 build 38. Requires macOS 15 or later. Free: one upstream proxy and up to 20 Allowlist domains. Pro adds Smart Proxy, up to 32 upstreams, failover, traffic statistics, menu bar rates, and up to 2,000 Allowlist domains.</p>
       <div class="support-grid">
         <article class="support-card">
           <h3>ProxyPAC does not provide a proxy server</h3>
@@ -107,24 +108,30 @@
         </article>
         <article class="support-card">
           <h3>Enable automatic proxy configuration</h3>
-          <p>Copy the PAC URL from ProxyPAC, open macOS Network Settings, select your active service, turn off Web Proxy (HTTP), Secure Web Proxy (HTTPS), and SOCKS Proxy, then enable Automatic Proxy Configuration and paste the URL.</p>
+          <p>In ProxyPAC, start the local services and click <strong>Copy URL and Open Settings</strong>. In System Settings, select your active Wi-Fi or Ethernet service, open Details → Proxies, enable <strong>Automatic Proxy Configuration</strong>, paste the copied URL, and apply the change. The default URL is <code>http://127.0.0.1:8899/proxy.pac</code>; use the app’s copied value if you changed its port. Disable conflicting proxy methods for that service. Keep ProxyPAC running. This affects compatible applications that honor system proxy settings; it is not a VPN or a device-wide tunnel.</p>
         </article>
         <article class="support-card">
           <h3>A domain is using the wrong route</h3>
-          <p>Add the hostname—not a full URL—to the Allowlist when it should always use the proxy. In Smart Proxy, clear an incorrectly learned domain to test it directly again. Reconnect the app or browser because existing connections may continue using their previous route.</p>
+          <p>Add the hostname—not a full URL—to the Allowlist to select its domain and subdomains for proxy routing. In version 1.0.6 build 38, loopback always connects directly, and enabled local-network bypass takes priority for local and private destinations, including domains resolving to private addresses. In Smart Proxy, clear an incorrectly learned domain to check it again. Reconnect the app or browser because existing connections may retain their previous route. Connection checks do not measure page-load or download speed.</p>
         </article>
         <article class="support-card">
           <h3>ProxyPAC Pro is not available</h3>
-          <p>Confirm that the Mac is signed in to the App Store and has network access, then use Restore Purchase. Purchases and entitlement checks are handled by Apple StoreKit.</p>
+          <p>Confirm that the Mac is signed in to the App Store and has network access, then open the <strong>ProxyPAC Pro</strong> tab and use <strong>Restore Purchases</strong> when Pro is locked. Use the Apple Account that made the purchase. Pro is an optional one-time purchase, not a subscription. A restoration error does not mean you should purchase again; check App Store access and retry. Purchases and entitlement checks are handled by Apple StoreKit.</p>
         </article>
       </div>
+    </section>
+
+    <section class="section-block shell">
+      <h2 class="section-title">Stop routing safely</h2>
+      <p>Before removing your proxy configuration or uninstalling ProxyPAC, disable Automatic Proxy Configuration for the network service where you enabled it. Other applications may otherwise keep requesting the local PAC address.</p>
+      <p>Automatic failover tries other saved upstreams. In build 38, Allowlisted and learned domains do not fall back to direct while the service runs; Smart Proxy may try direct for undecided domains. Loopback and local-network bypass rules still apply. This is not a system-wide kill switch.</p>
     </section>
 
     <section class="section-block shell">
       <p class="section-kicker">When contacting support</p>
       <h2 class="section-title">Include enough context to reproduce the issue.</h2>
       <ul class="request-list">
-        <li>ProxyPAC version and build number from Settings → About.</li>
+        <li>ProxyPAC version and build number from the app’s About tab.</li>
         <li>Your macOS version and whether the Mac uses Apple silicon or Intel.</li>
         <li>The action you took, what you expected, and what happened instead.</li>
         <li>Whether the issue affects service startup, PAC setup, routing, or ProxyPAC Pro.</li>

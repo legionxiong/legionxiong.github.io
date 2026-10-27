@@ -187,11 +187,11 @@
       <div>
         <div class="proxy-lockup">
           <img src="/assets/proxypac-icon.svg" alt="ProxyPAC app icon" width="66" height="66">
-          <p><strong>ProxyPAC</strong>macOS 13+ · Native utility</p>
+          <p><strong>ProxyPAC</strong>macOS 15+ · Native utility</p>
         </div>
         <p class="eyebrow">Focused proxy routing</p>
         <h1 class="proxy-title">Route traffic on your terms.</h1>
-        <p class="hero-copy">Route selected domains through a strict allowlist, or let Smart Proxy learn which public destinations need an upstream proxy you control.</p>
+        <p class="hero-copy">Route selected domains through an authorized HTTP proxy, or use optional Pro Smart Proxy learning. No proxy service or VPN is included. Version 1.0.6 build 38 is described below.</p>
         <div class="hero-actions">
           <a class="button primary" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a>
           <a class="button" href="/proxypac/privacy.html">Privacy policy</a>
@@ -219,10 +219,10 @@
       <h2 class="section-title">The routing you need, without a system-wide tunnel.</h2>
       <p class="section-intro">ProxyPAC serves a local PAC file and forwards traffic selected by Allowlist or Smart Proxy routing through proxies that you provide.</p>
       <div class="features-grid">
-        <article class="feature-card"><span class="card-number">01</span><h3>Strict allowlist routing</h3><p>Only domains you add, including their subdomains, use the system PAC proxy. Unmatched traffic remains direct.</p></article>
-        <article class="feature-card"><span class="card-number">02</span><h3>Smart Proxy learning</h3><p>Try unknown public destinations directly, start a proxy probe after an adaptive delay, and remember the proxy only after it successfully carries the request.</p></article>
+        <article class="feature-card"><span class="card-number">01</span><h3>Allowlist routing</h3><p>In Allowlist mode, matching domains and subdomains use your upstream proxy. Other destinations remain direct. Loopback and enabled local/private-network bypass take priority in build 38. Only applications honoring compatible proxy settings are covered.</p></article>
+        <article class="feature-card"><span class="card-number">02</span><h3>Smart Proxy learning</h3><p>Pro uses repeated direct and upstream TLS checks to learn when a proxy is needed or establishes connections significantly faster. One successful proxied request is not enough to persist learning. Connection timing does not measure page-load or download speed.</p></article>
         <article class="feature-card"><span class="card-number">03</span><h3>Fast proxy switching</h3><p>Save multiple upstream proxies and make a new selection effective for new connections immediately.</p></article>
-        <article class="feature-card"><span class="card-number">04</span><h3>Authentication and failover</h3><p>Keep proxy passwords in macOS Keychain and optionally try saved proxies in order without falling back to direct.</p></article>
+        <article class="feature-card"><span class="card-number">04</span><h3>Authentication and failover</h3><p>Keep proxy passwords in macOS Keychain. Pro can try saved backup proxies after upstream failures. Allowlisted and learned routes do not fall back to direct while the service runs; Smart Proxy may try direct for undecided domains. Local bypass rules still apply. HTTP proxy authentication is not encrypted in transit; use a trusted network or local upstream.</p></article>
         <article class="feature-card"><span class="card-number">05</span><h3>Rule backups</h3><p>Export and restore allowlist rules without including proxy credentials, app bookmarks, or traffic statistics.</p></article>
         <article class="feature-card"><span class="card-number">06</span><h3>Local domain statistics</h3><p>View proxied domains and byte counts in memory. Statistics clear when disabled or when the app quits.</p></article>
       </div>
@@ -233,7 +233,7 @@
       <h2 class="section-title">Set it once. Switch when you need.</h2>
       <div class="steps">
         <article class="step"><h3>Add your proxy</h3><p>Enter an upstream proxy server and port. Authentication is optional.</p></article>
-        <article class="step"><h3>Choose a routing mode</h3><p>Use Allowlist for explicit rules, or Smart Proxy to learn which public destinations need the proxy. Allowlisted domains always use it.</p></article>
+        <article class="step"><h3>Choose a routing mode</h3><p>Use Allowlist for explicit rules, or unlock Pro for Smart Proxy learning. Loopback and enabled local/private-network bypass take priority in build 38.</p></article>
         <article class="step"><h3>Enable automatic proxy configuration</h3><p>Paste the local PAC URL into macOS Network Settings, then keep ProxyPAC running.</p></article>
       </div>
     </section>
@@ -243,7 +243,7 @@
         <div>
           <p class="section-kicker">Local-first privacy</p>
           <h2>Your configuration stays on your Mac.</h2>
-          <p>ProxyPAC has no developer-operated analytics, account system, or traffic server. Local services listen only on 127.0.0.1, and live domain statistics are memory-only.</p>
+          <p>ProxyPAC does not include a consumer proxy service, account system, or analytics service. Configure an upstream proxy you are authorized to use. Local services listen only on 127.0.0.1, and live domain statistics are memory-only.</p>
         </div>
         <a class="button primary" href="/proxypac/privacy.html">Read the policy <span aria-hidden="true">→</span></a>
       </div>
